@@ -6,7 +6,7 @@ description: >
   `meridian spawn -a agent-reviewer`, passing the agent to review with -f.
 model: gpt
 effort: high
-skills: [agent-principles, agent-artifacts, review]
+skills: [agent-principles, agent-artifacts, prompt-review]
 tools: [Bash(git diff *), Bash(git log *), Bash(git show *)]
 disallowed-tools: [Agent, Edit, Write, NotebookEdit]
 sandbox: read-only

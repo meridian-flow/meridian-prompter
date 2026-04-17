@@ -6,7 +6,7 @@ description: >
   passing the skill to review with -f.
 model: gpt
 effort: high
-skills: [agent-principles, skill-artifacts, review]
+skills: [agent-principles, skill-artifacts, prompt-review]
 tools: [Bash(git diff *), Bash(git log *), Bash(git show *)]
 disallowed-tools: [Agent, Edit, Write, NotebookEdit]
 sandbox: read-only

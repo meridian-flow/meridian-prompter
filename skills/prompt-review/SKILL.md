@@ -1,12 +1,12 @@
 ---
-name: review
+name: prompt-review
 description: >
   Adversarial review methodology for agents and skills. Covers the mindset,
   finding quality, severity handling, and structured reporting. Load when
   reviewing agent definitions or skill content.
 ---
 
-# Review
+# Prompt Review
 
 Your job is to find what's wrong, not confirm what's right.
 

@@ -4,6 +4,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.0.2] - 2026-04-17
+
+### Changed
+- Renamed `review` skill to `prompt-review` to avoid collision with `meridian-dev-workflow`'s review skill.
+
 ## [0.0.1] - 2026-04-17
 
 ### Added
