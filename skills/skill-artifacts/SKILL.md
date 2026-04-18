@@ -16,7 +16,7 @@ Skills are reference material loaded into agents. They live in a `skills/` direc
 skills/
   skill-name/
     SKILL.md              # Required. Main skill file.
-    references/           # Optional. Deep content.
+    resources/           # Optional. Deep content.
       topic-a.md
       topic-b.md
     scripts/              # Optional. Executable code.
@@ -43,7 +43,7 @@ Core content.
 More content.
 
 ## References
-Pointers to deeper content in references/ directory.
+Pointers to deeper content in resources/ directory.
 ```
 
 ## Frontmatter Schema
@@ -91,7 +91,7 @@ When a skill supports multiple variants:
 ```
 skill-name/
 ├── SKILL.md
-└── references/
+└── resources/
     ├── variant-a.md      # Content for variant A
     ├── variant-b.md      # Content for variant B
     └── common.md         # Shared content
@@ -103,7 +103,7 @@ The body routes to the relevant reference based on context.
 
 **scripts/** — Executable code for deterministic tasks. Can execute without loading into context.
 
-**references/** — Documentation loaded as needed. For files >300 lines, include a table of contents.
+**resources/** — Documentation loaded as needed. For files >300 lines, include a table of contents.
 
 **assets/** — Files used in output (templates, icons, fonts). Referenced but not loaded.
 
@@ -132,7 +132,7 @@ For each finding: what's wrong, why it matters, fix direction, severity.
 
 ## Focus Areas
 
-See `references/focus-areas.md` for detailed guidance on:
+See `resources/focus-areas.md` for detailed guidance on:
 - Correctness review
 - Security review
 - Performance review

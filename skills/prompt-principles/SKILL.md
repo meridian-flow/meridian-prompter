@@ -1,17 +1,17 @@
 ---
-name: agent-principles
+name: prompt-principles
 description: >
-  Research-backed principles for designing LLM agents and skills. Load when
-  writing, reviewing, or improving agent prompts, skill definitions, or
-  multi-agent systems. Covers prompt-level craft, skill extraction, single-agent
-  design, and system-level coordination patterns.
+  Research-backed principles for designing LLM prompts, agents, and skills.
+  Load when writing, reviewing, or improving any prompt artifact. Covers
+  prompt-level craft, skill extraction, agent design, and multi-agent
+  coordination patterns.
 ---
 
-# Agent Principles
+# Prompt Principles
 
-Ground your design decisions in research, not intuition. Many prompting "best practices" are folklore that doesn't hold up — see `references/research.md` for what's empirically validated vs unvalidated. When uncertain, look it up before committing to an approach.
+Ground your design decisions in research, not intuition. Many prompting "best practices" are folklore that doesn't hold up — see `resources/research.md` for what's empirically validated vs unvalidated. When uncertain, look it up before committing to an approach.
 
-Four levels of agent design, each with distinct concerns. Load the relevant reference when working at that level.
+Four levels of prompt design, each with distinct concerns. Load the relevant reference when working at that level.
 
 ## Prompt-Level
 
@@ -24,7 +24,7 @@ How to write the text of a prompt. Attention is finite — structure and positio
 - **Right altitude** — Behavioral heuristics, not brittle if-then rules or vague hand-waving. Tell the model what to do, when, and why — trust it to sequence.
 - **Don't repeat across levels** — Description, body, and loaded skills each add new information. Repetition wastes tokens and drifts.
 
-See `references/prompt-level.md` for detail.
+See `resources/prompt-level.md` for detail.
 
 ## Skill-Level
 
@@ -35,7 +35,7 @@ When to extract shared knowledge into a skill vs keeping it in an agent body.
 - **Skills shape, agents act** — Skills provide knowledge and methodology. They don't run independently or make decisions.
 - **Domain organization** — When a skill supports multiple variants (frameworks, platforms), organize by variant with the body routing to the right reference.
 
-See `references/skill-level.md` for detail.
+See `resources/skill-level.md` for detail.
 
 ## Agent-Level
 
@@ -47,7 +47,7 @@ How to design a single agent's role and prompt.
 - **Agent owns outputs** — The agent produces artifacts and decisions. Skills inform how; the agent decides what.
 - **3-5 function limit** — Empirically, single agents handle 3-5 distinct functions before multi-agent coordination is justified.
 
-See `references/agent-level.md` for detail.
+See `resources/agent-level.md` for detail.
 
 ## System-Level
 
@@ -59,8 +59,8 @@ How to coordinate multiple agents.
 - **Loop guards are external** — The system enforces termination, not the agent. Max iterations (15-25 typical), convergence detection, explicit deferral as valid exit.
 - **Start simple** — Default to single agent. Add multi-agent only when evidence shows complexity delivers proportional value.
 
-See `references/system-level.md` for detail.
+See `resources/system-level.md` for detail.
 
 ## Research Backing
 
-These principles are grounded in published research where available. See `references/research.md` for citations and the distinction between empirically validated findings vs practitioner folklore.
+These principles are grounded in published research where available. See `resources/research.md` for citations and the distinction between empirically validated findings vs practitioner folklore.

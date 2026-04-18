@@ -4,7 +4,7 @@ description: >
   Schema and structure for agent definition files — the markdown with YAML
   frontmatter that defines reusable spawn configurations. Load when writing
   or reviewing agent .md files. For meridian-specific patterns, see
-  references/meridian.md.
+  resources/meridian.md.
 ---
 
 # Agent Artifacts
