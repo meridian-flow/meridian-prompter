@@ -4,6 +4,26 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- **prompt-principles**: Added "Be concise, expand for emphasis" as core principle
+- **prompt-principles**: Rewrote "repetition" principle — repetition improves compliance within artifacts
+- **prompt-principles**: Applied positive framing throughout, removed negative explanations
+- **prompt-principles**: Removed folklore section from research.md and split direct empirical support from operational guidance
+- **prompt-principles**: Tightened prompt-level.md for token efficiency
+- **prompt-review**: Added positive framing check to adversarial review
+- **AGENTS.md**: Rewrote to reflect actual agent/skill structure
+
+### Added
+- **prompter-orchestrator**: Renamed from prompt-writer, rewritten with dev-orchestrator style — collaborative sessions, active engagement, iterative drafting
+- **web-prompt-researcher**: New agent for researching prompting papers and patterns
+
+### Removed
+- Dependency on `meridian-dev-workflow` (was only used for internet-researcher)
+
+### Fixed
+- Consistent use of `resources/` directory name (was mixed with `references/`)
+- Removed false "empirical" claims for practitioner heuristics (3-5 function limit)
+
 ## [0.0.2] - 2026-04-17
 
 ### Changed

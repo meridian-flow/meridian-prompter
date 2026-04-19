@@ -9,20 +9,22 @@ description: >
 
 # Prompt Principles
 
-Ground your design decisions in research, not intuition. Many prompting "best practices" are folklore that doesn't hold up — see `resources/research.md` for what's empirically validated vs unvalidated. When uncertain, look it up before committing to an approach.
+Principles for writing effective prompts. See `resources/research.md` for citations where available.
 
 Four levels of prompt design, each with distinct concerns. Load the relevant reference when working at that level.
 
 ## Prompt-Level
 
-How to write the text of a prompt. Attention is finite — structure and position matter more than emphasis.
+How to write the text of a prompt. Attention is finite.
 
+- **Be concise, expand for emphasis** — Default to short what and why. When something matters, repeat it or explain it more.
 - **Primacy and recency** — Beginning and end get strongest attention; middle gets lost. Put purpose and constraints up front, critical reminders at the end.
-- **Structure over emphasis** — XML tags, headers, and clear sections outperform ALL CAPS and "MUST". Research shows structure wins; emphasis intensity is folklore.
-- **Positive framing** — Tell the model what TO do, not what to avoid. Negative constraints ("never", "don't") are weaker than positive guidance. When you must constrain, explain why.
-- **Explain why** — Reasoning transfers to novel cases; rules don't. "Do X because Y" generalizes better than "NEVER do Z".
+- **Structure over emphasis** — XML tags, headers, and clear sections outperform ALL CAPS and "MUST".
+- **Positive framing** — Tell the model what TO do, not what to avoid. Positive language directs attention to target behavior; negative instructions keep prohibited behavior in attention and often produce acknowledgments ("we won't do X") instead of omission.
+- **Hard boundaries are exceptions** — Negatives work for bright-line prohibitions on protected resources: "Don't modify .agents/" or "Never commit secrets."
+- **Explain why** — Reasoning transfers to novel cases. The model applies principles to new situations when it understands the underlying logic.
 - **Right altitude** — Behavioral heuristics, not brittle if-then rules or vague hand-waving. Tell the model what to do, when, and why — trust it to sequence.
-- **Don't repeat across levels** — Description, body, and loaded skills each add new information. Repetition wastes tokens and drifts.
+- **Repetition improves compliance** — Restate key principles at opening and closing of the same artifact. Keep repetition within artifacts; skills are already loaded into context.
 
 See `resources/prompt-level.md` for detail.
 
@@ -42,10 +44,10 @@ See `resources/skill-level.md` for detail.
 How to design a single agent's role and prompt.
 
 - **Single focus** — Each agent does one job well. Context window is the attention budget; multiple responsibilities compete for it.
-- **No role identity** — Don't assign personas ("you are a senior engineer"). PRISM research shows personas interfere with knowledge retrieval.
+- **No role identity** — Skip personas ("you are a senior engineer"). PRISM research shows personas interfere with knowledge retrieval. Describe behavior directly.
 - **Context engineering** — A focused window produces better attention than a sprawling one. Fresh spawn = fresh attention budget.
 - **Agent owns outputs** — The agent produces artifacts and decisions. Skills inform how; the agent decides what.
-- **3-5 function limit** — Empirically, single agents handle 3-5 distinct functions before multi-agent coordination is justified.
+- **3-5 function limit** — Single agents handle 3-5 distinct functions before multi-agent coordination helps.
 
 See `resources/agent-level.md` for detail.
 
@@ -61,6 +63,3 @@ How to coordinate multiple agents.
 
 See `resources/system-level.md` for detail.
 
-## Research Backing
-
-These principles are grounded in published research where available. See `resources/research.md` for citations and the distinction between empirically validated findings vs practitioner folklore.

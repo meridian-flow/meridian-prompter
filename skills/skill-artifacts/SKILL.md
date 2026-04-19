@@ -80,8 +80,8 @@ Three levels with different token costs:
 ### Implications
 
 - Keep body under 500 lines
-- Put variant-specific content in references
-- Body provides overview + routing to references
+- Put variant-specific content in resources
+- Body provides overview + routing to resources
 - References can be arbitrarily deep
 
 ## Reference Organization

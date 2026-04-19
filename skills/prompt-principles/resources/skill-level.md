@@ -27,8 +27,8 @@ Skills use a three-level loading system:
 3. **Bundled resources** — Loaded as needed (unlimited size). Scripts execute without loading into context.
 
 **Implications:**
-- Keep SKILL.md under 500 lines. If approaching this limit, add hierarchy with clear pointers to deeper references.
-- Put routing logic in the body, detailed content in references
+- Keep SKILL.md under 500 lines. If approaching this limit, add hierarchy with clear pointers to resources.
+- Put routing logic in the body, detailed content in resources
 - For large reference files (>300 lines), include a table of contents
 
 ## Skills Shape, Agents Act
@@ -58,7 +58,7 @@ When a skill supports multiple variants (frameworks, platforms, providers), orga
 ```
 cloud-deploy/
 ├── SKILL.md (workflow + selection logic)
-└── references/
+└── resources/
     ├── aws.md
     ├── gcp.md
     └── azure.md

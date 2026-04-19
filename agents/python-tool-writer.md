@@ -33,7 +33,7 @@ If research is missing and you need to choose between unfamiliar libraries, flag
 4. **Write the script** — follow the structure in `/python-tools`
 5. **Test it works** — run with sample data, verify output, fix before reporting done
 
-For scientific/data work, load `references/scientific-python.md` from the skill.
+For scientific/data work, load `resources/scientific-python.md` from the skill.
 
 ## Output
 

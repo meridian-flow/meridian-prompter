@@ -1,74 +1,50 @@
 # Prompt-Level Principles
 
-How to write the text of a prompt. These apply to agent bodies, skill content, and any system prompt.
+## Be Concise, Expand for Emphasis
+
+Default to short prompts — every token competes for attention. When something truly matters, repeat it or explain it more. Concise baseline, strategic expansion.
 
 ## Primacy and Recency
 
-Attention follows a U-curve: strong at the beginning, weak in the middle, strong at the end. This is documented in "Lost in the Middle" research — LLMs retrieve information worse when it's positioned in the middle of context.
+Attention follows a U-curve: strong at beginning and end, weak in the middle.
 
-**Implications:**
-- Open with what this agent does and why it matters. This survives compaction and gets strongest attention.
-- Put behavioral constraints with reasoning early. Middle placement loses them.
-- Close with critical reminders, completion criteria, or terminal report requirements.
-- If something really matters, state it at the beginning AND restate (not copy-paste) near the end.
+- Open with purpose and why it matters
+- Put constraints with reasoning early
+- Close with critical reminders
+- Restate key principles at opening and closing
 
 ## Structure Over Emphasis
 
-XML tags, markdown headers, and clear section delineation consistently outperform unstructured prompts. The specific claim that ALL CAPS or "MUST" improves compliance is folklore — no rigorous A/B study exists.
+XML tags, headers, and clear sections outperform ALL CAPS and "MUST".
 
-**What works:**
-- Consistent section headers
-- XML tags for distinct blocks (e.g., `<do_not_act_before_instructions>`)
-- Bullet lists for parallel items
-- Code blocks for examples
-
-**What's unvalidated:**
-- ALL CAPS for emphasis
-- "MUST" / "NEVER" / "CRITICAL" markers
-- Exclamation points or aggressive tone
-
-If everything is emphasized, nothing is. Reserve strong language for the one or two constraints that truly can't bend.
+Use: section headers, XML tags, bullet lists, code blocks.
 
 ## Positive Framing
 
-Tell the model what TO do, not what to avoid. Negative constraints are weaker than positive guidance.
+State what TO do. Positive language directs attention to target behavior.
 
-**Weak:** "Don't write verbose code. Never add unnecessary comments. Avoid premature abstraction."
+**Instead of:** "Don't write verbose code."
+**Write:** "Write concise code."
 
-**Strong:** "Write concise code. Add comments only when the why is non-obvious. Wait for the third use case before abstracting."
+**Why:** Negative instructions keep prohibited behavior in attention. The model acknowledges the prohibition ("we won't do X") instead of simply omitting X.
 
-When you must constrain, explain why — that transforms a negative rule into transferable understanding. But default to positive: describe the behavior you want, not the behavior you're prohibiting.
-
-Negative language also has a cognitive cost: the model has to infer what you DO want from what you said not to do. Positive framing is direct.
+**Exception:** Hard boundaries on protected resources ("Never commit secrets").
 
 ## Explain Why
 
-The model generalizes from explanations, not rules. Understanding *why* a rule exists lets it apply the principle to novel situations.
-
-**Weak:** "Never edit source files."
-
-**Strong:** "Stay at orchestration altitude — editing source files yourself means you're doing implementation work, which costs you the vantage point to notice when work drifts from user intent."
-
-Expect to write a sentence of reasoning for nearly every constraint. If you can't explain why, the constraint probably shouldn't be there.
+Attach reasoning so the model can generalize. "Stay at orchestration altitude — delegate to workers for visibility" beats "Never edit source files."
 
 ## Right Altitude
 
-Too specific: brittle if-then rules that break on edge cases the author didn't anticipate.
+Tell the model what to do, when, and why. Trust it to apply the principle.
 
-Too vague: high-level hand-waving that the model interprets with defaults you didn't want.
+**Example:**
+> Prefer git diff over reading full files when reviewing, because the diff shows exactly what moved.
 
-**Right altitude:** Tell the model what to do, when, and why. Trust it to apply the principle.
+## Information Layering
 
-**Example at right altitude:**
-> Prefer git diff over reading full files when reviewing a change, because the diff already shows exactly what moved.
+1. **Description** — for callers deciding whether to spawn
+2. **Body** — system prompt the agent sees
+3. **Skills** — shared reference material
 
-## Don't Repeat Across Levels
-
-Three places information can live:
-1. Frontmatter description — what the agent does, for callers deciding whether to spawn
-2. Body — the system prompt the agent sees
-3. Loaded skills — shared reference material
-
-Each level should add new information. If the description says "reviews code for correctness," the body shouldn't repeat that — it should start where the description left off.
-
-Repetition wastes tokens and creates maintenance drift: update one place, forget another, and now the agent gets conflicting instructions.
+Each level adds new information. Restate within levels for emphasis; avoid duplicating across levels.

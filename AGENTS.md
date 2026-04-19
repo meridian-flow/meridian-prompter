@@ -1,31 +1,27 @@
 # meridian-prompter
 
-A workflow for creating and improving LLM agents and skills from first principles.
+Agents and skills for writing LLM prompts.
 
-## Structure
+## Agents
 
 ```
 agents/
-  prompter-orchestrator.md # Entry point — routes write/review/test
-  agent-writer.md         # Drafts agent definitions
-  agent-reviewer.md       # Reviews against principles
-  agent-tester.md         # Tests agents against sample tasks
-  skill-writer.md         # Drafts skill definitions
-  skill-reviewer.md       # Reviews skills
-
-skills/
-  agent-principles/       # Research-backed design principles
-  agent-artifacts/        # Agent .md schema
-  skill-artifacts/        # Skill schema
+  prompter-orchestrator.md # Collaborative prompt writing sessions
+  prompt-reviewer.md       # Reviews prompts against principles
+  prompt-tester.md         # Tests agents against sample tasks
+  python-tool-writer.md    # Writes Python scripts and tools
+  web-prompt-researcher.md # Researches prompting papers and patterns
 ```
 
-## Core Principles
+## Skills
 
-The `agent-principles` skill encodes research-backed principles at four levels:
+```
+skills/
+  prompt-principles/    # Core prompting principles
+  agent-artifacts/      # Agent .md schema
+  skill-artifacts/      # Skill schema
+  prompt-review/        # Review methodology
+  python-tools/         # Python patterns
+```
 
-- **Prompt-level** — Primacy/recency, structure over emphasis, explain why
-- **Skill-level** — Progressive disclosure, reuse threshold, skills shape behavior
-- **Agent-level** — Single focus, no personas, context engineering
-- **System-level** — Orchestrator pattern, external verification, loop guards
-
-See `skills/agent-principles/references/research.md` for citations and the distinction between empirically validated findings and practitioner folklore.
+See `skills/prompt-principles/resources/research.md` for citations.

@@ -29,13 +29,13 @@ LLMs process prompts with finite attention:
 - **Compaction** — Long conversations get summarized; only the opening reliably survives
 - **Instruction following** — Models follow explicit instructions over implicit patterns
 
-This means: opening matters most, structure beats emphasis, reasoning transfers better than rules, repetition wastes tokens.
+This means: opening matters most, structure beats emphasis, reasoning transfers better than rules, and repetition should be targeted. Repeat within the same artifact for emphasis; avoid redundant duplication across description, body, and skills.
 
 ## What to Evaluate
 
 ### Prompt-Level
 
-Does the prompt use attention well? Purpose up front, constraints with reasoning, clear structure, no repetition, positive framing, right altitude (heuristics not rigid rules).
+Does the prompt use attention well? Purpose up front, constraints with reasoning, clear structure, targeted repetition for emphasis, positive framing, right altitude (heuristics not rigid rules), and no redundant cross-level duplication.
 
 ### Agent-Level
 

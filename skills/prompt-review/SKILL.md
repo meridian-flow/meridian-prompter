@@ -43,6 +43,7 @@ Think about how the agent fails, not how it succeeds:
 - What if the agent is spawned without expected context?
 - What if this conflicts with a skill it loads?
 - What principles does this violate and why does that matter?
+- Does the prompt use positive framing? Flag negative instructions that keep prohibited behavior in attention.
 
 Don't be adversarial for its own sake. The goal is finding real problems, not demonstrating cleverness. If the agent is genuinely good, say so — but earn that conclusion by actually looking.
 

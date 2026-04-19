@@ -12,7 +12,7 @@ Each agent does one job well. The context window is the attention budget — mul
 - A coder also trying to review its own work splits focus AND creates conflict of interest
 - Fresh spawn = fresh attention budget fully focused on one job
 
-**Empirical finding:** Single agents can handle 3-5 distinct functions before multi-agent coordination is justified. Beyond that, focus degrades.
+Single agents handle 3-5 distinct functions before multi-agent coordination helps.
 
 **Signs an agent is doing too much:**
 - The prompt has multiple "## Mode" sections for different behaviors

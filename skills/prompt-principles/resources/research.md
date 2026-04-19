@@ -1,30 +1,27 @@
 # Research Backing
 
-What's empirically validated vs practitioner folklore.
+Research citations for key principles, grouped by evidence strength.
 
-## Empirically Validated
+## Direct Empirical Support
 
 | Finding | Source |
 |---------|--------|
 | Position matters (primacy/recency) | "Lost in the Middle" (Liu et al., 2023) |
+| Prompt repetition can improve compliance on non-reasoning models | arxiv:2512.14982 |
 | Persona prompting hurts reasoning | PRISM study (arxiv:2603.18507) |
 | RLHF models follow instructions better than pre-RLHF | InstructGPT (arxiv:2203.02155) |
-| Structure (XML tags) beats unstructured prompts | Anthropic prompt engineering docs |
-| Multi-agent orchestrator outperforms single on breadth-first queries | Anthropic multi-agent research (90.2% improvement) |
+| Multi-agent orchestrator outperforms single on breadth-first queries in one study | Anthropic multi-agent research (90.2% improvement) |
 | ~2% context retention loss per handoff step | Multi-Layered Memory Architectures (arxiv:2603.29194) |
 | Self-reflection without external tools fails | CRITIC framework (arxiv:2305.11738) |
-| Tool set >20 degrades selection quality | Agent harness failures research |
-| Max iterations 15-25 typical for production | Multiple production systems documented |
 | ReAct outperforms pure CoT on multi-hop reasoning | ReAct (arxiv:2210.03629) |
 
-## Practitioner Folklore (Unvalidated)
+## Documented Guidance And Operational Practice
 
-| Claim | Status |
-|-------|--------|
-| ALL CAPS improves compliance | No rigorous A/B study |
-| "MUST"/"NEVER" improves compliance | Not specifically tested |
-| Emphatic language causes overtriggering on new models | Observation, not studied |
-| Emotional prompts help | Mixed evidence; task-dependent |
+| Finding | Source |
+|---------|--------|
+| XML tags and clear structure are recommended over unstructured prompts | Anthropic prompt engineering docs |
+| Tool sets above ~20 can degrade selection quality in practice | Agent harness failures research |
+| Max iterations around 15-25 are common production guardrails | Multiple production systems documented |
 
 ## Key Quotes from Research
 

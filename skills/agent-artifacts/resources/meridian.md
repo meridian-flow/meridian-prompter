@@ -93,7 +93,7 @@ Agents/skills live in source repos, synced to `.agents/` via `meridian mars sync
 |---------|----------|
 | `meridian-base` | Core infrastructure — spawn skills, CLI skills |
 | `meridian-dev-workflow` | Dev agents — coder, reviewer, orchestrators |
-| `meridian-prompter` | Prompt agents — prompt-writer, prompt-reviewer |
+| `meridian-prompter` | Prompt agents — prompter-orchestrator, prompt-reviewer, prompt-tester, python-tool-writer, web-prompt-researcher |
 
 Workflow: edit source → commit → `meridian mars sync` → `.agents/` regenerates.
 
