@@ -14,7 +14,14 @@ Agents spawned by orchestrators should be **caller-agnostic** — they work rega
 
 **Single job.** Subagents do one thing well. Multiple distinct jobs → multiple agents.
 
-**Produce artifacts, not just responses.** Write to `$MERIDIAN_WORK_DIR` or specified paths. Files survive compaction and can be passed to the next spawn.
+**Produce artifacts, not just responses.** Files survive compaction and can be passed to the next spawn. Discover where to write via the CLI, not hardcoded env vars:
+
+- `meridian work current` — active work directory for this session. Can be empty when no work is attached; fall back to a caller-provided path, or pick `meridian context work` vs `meridian context kb` by artifact scope (work-scoped vs durable).
+- `meridian context work` — configured work context root.
+- `meridian context work.archive` — archived work root.
+- `meridian context kb` — knowledge base root for durable notes.
+
+`MERIDIAN_*` path vars are internal/compatibility propagation, not the user-facing discovery API. When env is unavoidable: `MERIDIAN_PROJECT_DIR` is the project/repo directory override, `MERIDIAN_PROJECT_ROOT` is the runtime state root (not the repo root), and prefer `MERIDIAN_KB_DIR` over the legacy `MERIDIAN_FS_DIR`.
 
 ## Context Handoffs
 

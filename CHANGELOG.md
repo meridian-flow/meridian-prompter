@@ -5,6 +5,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 ## [Unreleased]
 
 ### Changed
+- **prompt-principles**: Replaced `$MERIDIAN_WORK_DIR` guidance with CLI discovery — `meridian context work|kb|work.archive` for roots, `meridian work current` for session work dir (empty = no work attached). `MERIDIAN_*` vars marked internal; warn against `MERIDIAN_FS_DIR` (legacy) and against treating `MERIDIAN_PROJECT_ROOT` as repo root.
 - **prompt-principles**: Added "Be concise, expand for emphasis" as core principle
 - **prompt-principles**: Rewrote "repetition" principle — repetition improves compliance within artifacts
 - **prompt-principles**: Applied positive framing throughout, removed negative explanations
