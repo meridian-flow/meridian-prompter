@@ -6,7 +6,7 @@ description: >
   spawn conventions and permission patterns. Spawn with
   `meridian spawn -a prompter-orchestrator`, passing requirements in the
   prompt and any existing prompts to improve with -f.
-model: opus
+harness: claude
 effort: high
 skills: [prompt-principles, agent-artifacts, skill-artifacts, meridian-spawn]
 tools: [Bash, Write, Edit, Glob, Grep, Read]
