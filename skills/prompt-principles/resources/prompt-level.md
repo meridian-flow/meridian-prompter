@@ -48,3 +48,27 @@ Tell the model what to do, when, and why. Trust it to apply the principle.
 3. **Skills** — shared reference material
 
 Each level adds new information. Restate within levels for emphasis; avoid duplicating across levels.
+
+## Escape Hatches Get Used
+
+"Or lighter context" becomes "always skip context." Optional easier paths become de facto defaults — models prefer the path of least resistance.
+
+If the hard path is the right path, don't offer an easier one. If flexibility is genuinely needed, make the thorough option the default and require explicit justification for shortcuts.
+
+**Example:**
+> **Weak:** "Spawned by @dev-orchestrator after design approval, or by @impl-orchestrator when no plan exists."
+>
+> The second clause is an escape hatch — @impl-orchestrator will always skip design approval.
+>
+> **Strong:** "Spawned by @dev-orchestrator after design approval, or by @impl-orchestrator to adjust an existing plan mid-flight."
+>
+> Both paths require prior work. No free shortcut.
+
+## Every Word Carries Decision Weight
+
+Filler weakens prompts. Each word should change what the model does — if removing it doesn't change behavior, cut it.
+
+**Example:**
+> "Scoped, behavior-preserving structural refactor" → "behavior-preserving refactor"
+>
+> "Scoped" adds nothing when the task is already scoped by the caller. "Structural" adds nothing when refactoring is inherently structural.

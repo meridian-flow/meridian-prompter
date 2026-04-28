@@ -42,8 +42,22 @@ description: >
 Structure:
 1. **When/why to use** — What problem? What situation?
 2. **How to spawn** — `meridian spawn -a <name>` with typical flags
-3. **What context it needs** — Files, requirements
-4. **Where output goes** — If applicable
+3. **What context it needs** — Specific files to pass with `-f`, conversation context with `--from`
+4. **How to prompt it** — What to tell it in the task prompt: scope, constraints, ownership, focus area
+5. **Where output goes** — If applicable
+
+```yaml
+# Good — teaches the caller how to use it effectively
+description: >
+  Use for implementation tasks ready to execute against a phase blueprint.
+  Spawn with `meridian spawn -a coder`, passing the blueprint and relevant
+  source files with -f. Tell it which subphase to implement, which
+  behavioral requirements it owns, and any integration boundaries to respect.
+
+# Weak — tells you what it is but not how to use it
+description: >
+  Implements code changes based on plans.
+```
 
 ## Permission Model
 

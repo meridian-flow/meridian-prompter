@@ -4,6 +4,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-04-28
+
+### Added
+- **prompt-principles (prompt-level)**: "Escape hatches get used" — optional easier paths become de facto defaults; don't offer shortcuts when the hard path is the right path
+- **prompt-principles (prompt-level)**: "Every word carries decision weight" — filler dilutes the words that matter; cut what doesn't change behavior
+- **prompt-principles (agent-level)**: "Descriptions serve callers" — teach usage (when, how to invoke, what to pass, how to prompt, what to expect), not just purpose
+- **prompt-principles (agent-level)**: "Route by cognitive mode" — decompose by thinking type (faithful execution vs aesthetic judgment vs ambiguity handling), not file type
+- **prompt-principles (agent-level)**: "Generic over specialized" — if specialization lives entirely in the caller's prompt, keep the agent generic
+- **prompt-principles (skill-level)**: "Separate mechanism from methodology" — how to operate a tool vs what to do with it; separation enables reuse across use cases
+- **prompt-principles (system-level)**: "Explicit handoff content" — name specific file paths at every handoff, not categories
+- **prompt-principles (system-level)**: "Verify alignment at narrowings" — pipeline hourglass loses scope at each narrowing; verify coverage before it compounds
+- **prompt-principles (system-level)**: "Match model to cognitive mode" — clear-goal execution, ambiguity handling, and nuanced judgment need different models
+- **prompt-principles (meridian)**: Pipeline handoff patterns — name upstream artifacts explicitly at each transition
+- **prompt-principles (meridian)**: Model staffing guidance — match profile model to agent's cognitive mode
+- **prompt-principles (meridian)**: `--from $MERIDIAN_CHAT_ID` pattern for primary session context
+- **agent-artifacts (meridian)**: Description pattern extended with "How to prompt it" — tell callers what to include in the task prompt
+- **prompter-orchestrator**: Renamed from prompt-writer, rewritten with dev-orchestrator style — collaborative sessions, active engagement, iterative drafting
+- **web-prompt-researcher**: New agent for researching prompting papers and patterns
+
 ### Changed
 - **prompt-principles**: Replaced `$MERIDIAN_WORK_DIR` guidance with CLI discovery — `meridian context work|kb|work.archive` for roots, `meridian work current` for session work dir (empty = no work attached). `MERIDIAN_*` vars marked internal; warn against `MERIDIAN_FS_DIR` (legacy) and against treating `MERIDIAN_PROJECT_ROOT` as repo root.
 - **prompt-principles**: Added "Be concise, expand for emphasis" as core principle
@@ -13,10 +32,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 - **prompt-principles**: Tightened prompt-level.md for token efficiency
 - **prompt-review**: Added positive framing check to adversarial review
 - **AGENTS.md**: Rewrote to reflect actual agent/skill structure
-
-### Added
-- **prompter-orchestrator**: Renamed from prompt-writer, rewritten with dev-orchestrator style — collaborative sessions, active engagement, iterative drafting
-- **web-prompt-researcher**: New agent for researching prompting papers and patterns
 
 ### Removed
 - Dependency on `meridian-dev-workflow` (was only used for internet-researcher)

@@ -102,3 +102,36 @@ Critical research finding:
 | **Task overload** | Too many distinct tasks in single request. Leads to hallucination, missing tasks, low quality. |
 | **Self-review** | Same agent reviews its own work. Conflict of interest, no external verification. |
 | **Raw history handoff** | Passing full conversation instead of structured briefing. Context bloat, attention dilution. |
+
+## Explicit Handoff Content
+
+Name specific artifacts at every handoff boundary. Categories aren't enough — file paths are.
+
+**Weak:** "Based on the design, implement it."
+
+**Strong:** "Implement phase 2 per `design/spec/auth.md`, respecting the integration boundaries in `design/decisions.md`."
+
+The weak version pushes synthesis onto the receiving agent — it must figure out which files matter, which decisions apply, and what "the design" even means. The strong version tells it exactly what to read.
+
+At pipeline narrowings, lost context compounds. A 2% loss at each step becomes significant across a 5-step pipeline. Explicit file references are the cheapest insurance against silent scope loss.
+
+## Verify Alignment at Narrowings
+
+Pipelines have an hourglass shape: wide exploration (design) narrows to a single artifact (plan), then widens again (parallel implementation). The narrow point is where scope loss occurs — requirements present in the design silently drop from the plan, and implementation faithfully builds the wrong thing.
+
+Verify alignment at every narrowing:
+- Does the plan cover everything the design specified?
+- Does the implementation deliver everything the plan promised?
+- Are behavioral requirements traceable end-to-end?
+
+Verification at the end catches drift too late. Verification at each transition catches it while context is fresh and fixes are cheap. Dedicated alignment verification (separate from code review) catches coverage gaps that look invisible to the implementer.
+
+## Match Model to Cognitive Mode
+
+Different models excel at different cognitive modes. Matching matters for multi-agent staffing:
+
+- **Clear-goal execution** — models that follow instructions faithfully, execute fast, don't overthink. Best for implementation against clear specs.
+- **Ambiguity handling** — models that push back, ask clarifying questions, handle underspecified tasks. Best for orchestration and user-facing roles.
+- **Judgment and nuance** — models with strong reasoning and evaluation depth. Best for adversarial review and architectural decisions.
+
+Mismatches are expensive in both directions: an overthinking model on a simple task wastes cost and time; a shallow-execution model on a judgment task produces fast, wrong answers.

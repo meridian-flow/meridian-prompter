@@ -65,3 +65,15 @@ cloud-deploy/
 ```
 
 The body routes to the relevant reference; the agent reads only what applies. This keeps context focused and avoids loading irrelevant variants.
+
+## Separate Mechanism from Methodology
+
+A skill should be either mechanism (how to operate a tool) or methodology (what to do with it), not both.
+
+**Mechanism:** How to drive Playwright — commands, sessions, selectors, network mocking.
+
+**Methodology:** What to test — visual regression, interaction flows, accessibility, viewport coverage.
+
+Combining them couples the skill to one use case. Separated, the mechanism skill serves any agent that needs browser automation (testing, scraping, research), and the methodology skill works with any browser mechanism.
+
+**Test:** Can you swap the underlying tool without rewriting the methodology? Can you apply the methodology through a different mechanism? If both answers are yes, they should be separate skills.

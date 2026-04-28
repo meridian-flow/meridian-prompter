@@ -71,3 +71,42 @@ The body shouldn't reference who spawned the agent or how. The agent sees whatev
 Phrases like "the @dev-orchestrator spawns you with --from" are meaningless to the receiving model and create false dependency on a specific caller.
 
 **Benefit:** Caller-agnostic agents are reusable across workflows. The same @reviewer can be called from a dev orchestrator, a CI pipeline, or a human ad-hoc spawn.
+
+## Descriptions Serve Callers
+
+The description is the only thing a caller sees before deciding to spawn. It teaches usage, not just purpose.
+
+Cover:
+- **When to use it** — what situation triggers reaching for this agent
+- **How to invoke it** — spawn command, typical flags
+- **What to pass** — files, context, conversation history
+- **How to prompt it** — what to tell it (task scope, constraints, ownership boundaries)
+- **What to expect** — output format, where results land
+
+A description that says "reviews code" tells you what it is. A description that says "use when code needs adversarial review, spawn with X, pass artifacts with -f, specify focus area in the prompt for a targeted lane" teaches you how to use it.
+
+## Route by Cognitive Mode
+
+Decompose agents by the type of thinking required, not by file type or domain.
+
+**Instead of:** @backend-coder and @frontend-coder (domain split)
+
+**Think:** @coder (faithful execution against a clear spec) and @frontend-coder (aesthetic judgment against a visual target)
+
+The cognitive mode determines what the agent needs:
+- **Faithful execution** — clear spec, concrete deliverable, measured against requirements
+- **Aesthetic judgment** — visual target, design fidelity, "does this match?"
+- **Ambiguity handling** — unclear requirements, needs to push back and clarify
+
+When routing is by domain, agents fight over boundary cases ("is this React file frontend or backend?"). When routing is by cognitive mode, the question becomes "does this task need aesthetic judgment?" — clearer and more stable.
+
+## Generic Over Specialized
+
+If an agent's specialization lives entirely in its prompt, it doesn't need to be a separate agent — make the existing agent generic and let the caller's prompt provide the specialization.
+
+**Signs of over-specialization:**
+- The new agent's body is nearly identical to an existing one
+- The only difference is the task description
+- You can't name a distinct cognitive mode or toolset the specialist needs
+
+A generic @browser agent whose caller's prompt defines the purpose (scraping, research, annotation) is more reusable than @design-researcher, @css-scraper, and @site-analyzer as separate agents.
