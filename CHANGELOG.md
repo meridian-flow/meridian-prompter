@@ -4,6 +4,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-04-30
+
 ### Changed
 - `prompter-orchestrator` → `prompt-dev`. Role rename — real-world title primes for collaborative iteration over mechanical orchestration.
 - All skills get explicit invocation-control flags (`disable-model-invocation`, `allow_implicit_invocation`). Skills only load when listed in an agent's `skills:` field, not from description matching.
