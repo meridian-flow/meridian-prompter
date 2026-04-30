@@ -68,9 +68,9 @@ If you're putting decision-making into a skill, it probably wants to be its own 
 
 The body shouldn't reference who spawned the agent or how. The agent sees whatever context landed in its window and has no way to distinguish source.
 
-Phrases like "the @dev-orchestrator spawns you with --from" are meaningless to the receiving model and create false dependency on a specific caller.
+Phrases like "the @product-manager spawns you with --from" are meaningless to the receiving model and create false dependency on a specific caller.
 
-**Benefit:** Caller-agnostic agents are reusable across workflows. The same @reviewer can be called from a dev orchestrator, a CI pipeline, or a human ad-hoc spawn.
+**Benefit:** Caller-agnostic agents are reusable across workflows. The same @reviewer can be called from a manager, a CI pipeline, or a human ad-hoc spawn.
 
 ## Descriptions Serve Callers
 

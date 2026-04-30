@@ -4,6 +4,8 @@ description: >
   Patterns and references for writing Python scripts and tools. Load when
   writing standalone scripts, CLI tools, or utilities. Covers script structure,
   distribution patterns, and domain-specific references (scientific computing, etc.).
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # Python Tools

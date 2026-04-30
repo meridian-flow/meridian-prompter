@@ -84,9 +84,9 @@ Match tier to task, not maximum possible:
 ### Tool Restrictions
 
 - **`tools:`** — Allowlist. Scopes Bash (`Bash(git *)`). On Claude, doesn't restrict built-ins.
-- **`disallowed-tools:`** — Denylist. Enforced on Claude. Use `[Agent]` on orchestrators.
+- **`disallowed-tools:`** — Denylist. Enforced on Claude. Use `[Agent]` on managers/leads.
 
-## Orchestrator Frontmatter
+## Manager/Lead Frontmatter
 
 ```yaml
 disallowed-tools: [Agent, Edit, Write, NotebookEdit]
@@ -106,8 +106,8 @@ Agents/skills live in source repos, synced to `.agents/` via `meridian mars sync
 | Package | Contains |
 |---------|----------|
 | `meridian-base` | Core infrastructure — spawn skills, CLI skills |
-| `meridian-dev-workflow` | Dev agents — coder, reviewer, orchestrators |
-| `meridian-prompter` | Prompt agents — prompter-orchestrator, prompt-reviewer, prompt-tester, python-tool-writer, web-prompt-researcher |
+| `meridian-dev-workflow` | Dev agents — coder, reviewer, leads, managers |
+| `meridian-prompter` | Prompt agents — prompt-dev, prompt-reviewer, prompt-tester, python-tool-writer, web-prompt-researcher |
 
 Workflow: edit source → commit → `meridian mars sync` → `.agents/` regenerates.
 

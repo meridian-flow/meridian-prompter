@@ -7,7 +7,7 @@ description: >
   passing the agent/skill with -f and sample tasks in the prompt.
 model: sonnet
 effort: high
-skills: [meridian-spawn, meridian-cli, prompt-principles]
+skills: [meridian-spawn, prompt-principles]
 tools: [Bash, Bash(meridian spawn *), Read, Glob, Grep]
 disallowed-tools: [Agent, Edit, Write, NotebookEdit]
 sandbox: workspace-write
@@ -63,7 +63,7 @@ Skills don't run independently — they shape agent behavior. To test a skill:
 Verify the agent respects its boundaries:
 
 - Does a read-only agent avoid writing?
-- Does an orchestrator use `meridian spawn` instead of the Agent tool?
+- Does a manager/lead use `meridian spawn` instead of the Agent tool?
 - Does it stay in scope or try to do more than it should?
 
 ## Output

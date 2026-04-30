@@ -45,13 +45,13 @@ Single focus (one job), no persona statements, caller-agnostic (works for any sp
 
 Reuse justified (2+ agents need it), progressive disclosure (body <500 lines, deep content in resources), skills inform rather than decide.
 
-### System-Level (orchestrators)
+### System-Level (managers/leads)
 
 Stays at coordination altitude, clear handoffs, external loop guards.
 
 ### Meridian-Specific
 
-When reviewing Meridian prompts: description leads with when/why and includes spawn command, sandbox matches actual needs, orchestrators have `disallowed-tools: [Agent]`, subagent bodies are caller-agnostic.
+When reviewing Meridian prompts: description leads with when/why and includes spawn command, sandbox matches actual needs, managers/leads have `disallowed-tools: [Agent]`, subagent bodies are caller-agnostic.
 
 ## Good Findings
 

@@ -5,6 +5,8 @@ description: >
   frontmatter that defines reusable spawn configurations. Load when writing
   or reviewing agent .md files. For meridian-specific patterns, see
   resources/meridian.md.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # Agent Artifacts
@@ -58,7 +60,7 @@ autocompact: 85                     # Optional. Auto-compact threshold.
 
 **tools** — Tool allowlist. Useful for scoping Bash (`Bash(git *)`) and for harnesses like OpenCode/Codex. On Claude, this doesn't restrict built-in tools.
 
-**disallowed-tools** — Tool denylist. On Claude, this removes tools. Use for hard restrictions like `[Agent]` on orchestrators that must use `meridian spawn`.
+**disallowed-tools** — Tool denylist. On Claude, this removes tools. Use for hard restrictions like `[Agent]` on managers/leads that must use `meridian spawn`.
 
 **sandbox** — Permission tier:
 - `read-only` — Can read, can't modify

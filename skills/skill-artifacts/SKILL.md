@@ -4,6 +4,8 @@ description: >
   Schema and structure for skill definitions — the SKILL.md files and
   bundled resources that provide shared knowledge to agents. Load when
   writing or reviewing skills.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # Skill Artifacts
@@ -55,17 +57,37 @@ description: >                      # Required. Triggering surface.
   What this skill provides. Include trigger phrases and contexts.
   Be specific about when to load it.
 compatibility: [tool-x, tool-y]     # Optional. Required tools/dependencies.
+disable-model-invocation: true      # Optional. Prevents implicit loading.
+allow_implicit_invocation: false    # Optional. Codex equivalent of above.
 ---
 ```
 
+### Invocation Control
+
+By default, skill descriptions are always in context and can trigger implicit
+loading. For skills that should only load when explicitly listed in an agent's
+`skills:` field, set both flags:
+
+- `disable-model-invocation: true` — Claude Code: prevents the model from
+  loading the skill based on description matching.
+- `allow_implicit_invocation: false` — Codex: equivalent control.
+
+Most skills should have both flags set. Exempt only skills that serve as
+safety nets an agent might need to discover mid-task (e.g., privilege
+escalation, issue filing).
+
 ### Description as Trigger
 
-The description is the primary mechanism for skill triggering. Include:
+When implicit invocation is enabled, the description is the primary mechanism
+for skill triggering. Include:
 - What the skill does
 - Specific contexts for when to use it
 - Trigger phrases users might say
 
 Be slightly "pushy" — undertriggering is more common than overtriggering.
+
+When implicit invocation is disabled, the description still serves callers
+deciding whether to add the skill to an agent's `skills:` list.
 
 ## Progressive Disclosure
 

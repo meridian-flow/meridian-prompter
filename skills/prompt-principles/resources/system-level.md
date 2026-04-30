@@ -66,7 +66,7 @@ Critical research finding:
 **Valid exit conditions:**
 - Convergent: no new substantive findings
 - Verified: machine-checkable tests confirm success
-- Explicitly deferred: remaining items logged in decisions.md
+- Explicitly deferred: remaining items logged with reasoning
 - Escalated: problem is outside agent's visibility, needs human input
 
 ## Start Simple
@@ -109,7 +109,7 @@ Name specific artifacts at every handoff boundary. Categories aren't enough — 
 
 **Weak:** "Based on the design, implement it."
 
-**Strong:** "Implement phase 2 per `design/spec/auth.md`, respecting the integration boundaries in `design/decisions.md`."
+**Strong:** "Implement phase 2 per `design/spec/auth.md`, respecting the integration boundaries in `design/architecture/boundaries.md`."
 
 The weak version pushes synthesis onto the receiving agent — it must figure out which files matter, which decisions apply, and what "the design" even means. The strong version tells it exactly what to read.
 

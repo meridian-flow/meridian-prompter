@@ -4,6 +4,8 @@ description: >
   Adversarial review methodology for agents and skills. Covers the mindset,
   finding quality, severity handling, and structured reporting. Load when
   reviewing agent definitions or skill content.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # Prompt Review

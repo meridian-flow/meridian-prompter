@@ -4,7 +4,7 @@ Design principles specific to the Meridian multi-agent ecosystem. These extend t
 
 ## Subagent Design
 
-Agents spawned by orchestrators should be **caller-agnostic** — they work regardless of who spawned them.
+Agents spawned by managers or leads should be **caller-agnostic** — they work regardless of who spawned them.
 
 **Don't reference the caller.** The body shouldn't mention "the orchestrator spawns you with..." — the agent sees context in its window with no way to know where it came from.
 
@@ -73,40 +73,40 @@ At each pipeline transition, handoff quality determines whether scope survives. 
 
 The principle: each spawn command should make it obvious what the agent reads and what it's responsible for. If you can't name the `-f` files, the handoff context doesn't exist as artifacts yet — materialize it first.
 
-## Orchestrator Principles
+## Manager/Lead Principles
 
-Orchestrators coordinate — they don't implement.
+Managers and leads coordinate — they don't implement.
 
 ### The Core Pattern
 
 ```
-Orchestrator (routes, evaluates) → Workers (execute)
+Manager/Lead (routes, evaluates) → Workers (execute)
 ```
 
-The orchestrator:
+The manager/lead:
 - Captures requirements, confirms direction
 - Spawns workers with focused context
 - Evaluates results, routes next steps
 - Handles convergence and escalation
 
-The orchestrator does NOT:
+The manager/lead does NOT:
 - Write code or edit files
 - Do work it should delegate
 - Mix implementation with coordination
 
 ### Why This Separation Matters
 
-If the orchestrator implements:
+If the manager/lead implements:
 - It loses the vantage point to notice drift
 - It can't objectively review its own work
 - Spawns don't produce traceable reports
 - Review/implementation separation breaks
 
-Even for "trivial" tasks, spawn a worker. The orchestrator's value is coordination altitude.
+Even for "trivial" tasks, spawn a worker. The manager/lead's value is coordination altitude.
 
 ### Convergence and Loop Guards
 
-Orchestrators control when to stop — workers don't self-terminate loops.
+Managers and leads control when to stop — workers don't self-terminate loops.
 
 - Define convergence criteria (e.g., "no blocking findings")
 - Set max iterations externally (15-25 typical)
@@ -127,7 +127,7 @@ Match model choice to the agent's cognitive mode. Model defaults belong in agent
 
 **Clear-goal execution** — fast, instruction-faithful models. Best for coders, testers, builders with clear specs. These models excel when the target is unambiguous; they overthink when it isn't.
 
-**Ambiguity handling** — models that push back, ask questions, iterate with the user. Best for primary/orchestrator agents, design exploration, user-facing roles. These models handle underspecified tasks where the "right answer" emerges through dialogue.
+**Ambiguity handling** — models that push back, ask questions, iterate with the user. Best for primary agents, managers/leads, design exploration, user-facing roles. These models handle underspecified tasks where the "right answer" emerges through dialogue.
 
 **Judgment and review** — models with evaluation depth and nuanced reasoning. Best for adversarial review, architectural decisions, complex tradeoff analysis.
 

@@ -5,6 +5,8 @@ description: >
   Load when writing, reviewing, or improving any prompt artifact. Covers
   prompt-level craft, skill extraction, agent design, and multi-agent
   coordination patterns.
+disable-model-invocation: true
+allow_implicit_invocation: false
 ---
 
 # Prompt Principles

@@ -56,11 +56,11 @@ Each level adds new information. Restate within levels for emphasis; avoid dupli
 If the hard path is the right path, don't offer an easier one. If flexibility is genuinely needed, make the thorough option the default and require explicit justification for shortcuts.
 
 **Example:**
-> **Weak:** "Spawned by @dev-orchestrator after design approval, or by @impl-orchestrator when no plan exists."
+> **Weak:** "Spawned by @product-manager after design approval, or by @tech-lead when no plan exists."
 >
-> The second clause is an escape hatch — @impl-orchestrator will always skip design approval.
+> The second clause is an escape hatch — @tech-lead will always skip design approval.
 >
-> **Strong:** "Spawned by @dev-orchestrator after design approval, or by @impl-orchestrator to adjust an existing plan mid-flight."
+> **Strong:** "Spawned by @product-manager after design approval, or by @tech-lead to adjust an existing plan mid-flight."
 >
 > Both paths require prior work. No free shortcut.
 

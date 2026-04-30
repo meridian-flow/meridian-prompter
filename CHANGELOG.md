@@ -4,6 +4,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- `prompter-orchestrator` → `prompt-dev`. Role rename — real-world title primes for collaborative iteration over mechanical orchestration.
+- All skills get explicit invocation-control flags (`disable-model-invocation`, `allow_implicit_invocation`). Skills only load when listed in an agent's `skills:` field, not from description matching.
+- `skill-artifacts`: documents invocation-control fields in frontmatter schema.
+- `agent-artifacts`, `prompt-principles` resources: "orchestrator" role references → "manager/lead" throughout. "Orchestrator pattern" (the design pattern) unchanged.
+- `prompt-reviewer`, `prompt-tester`: updated to use manager/lead terminology for role labels.
+- `meridian.toml`: primary agent → `prompt-dev`.
+- `mars.toml` opus model description updated.
+- `prompt-dev`: added `mars version` release guidance.
+
 ## [0.0.7] - 2026-04-28
 
 ### Added
