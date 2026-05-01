@@ -54,7 +54,7 @@ How to design a single agent's role and prompt.
 - **Agent owns outputs** — The agent produces artifacts and decisions. Skills inform how; the agent decides what.
 - **3-5 function limit** — Single agents handle 3-5 distinct functions before multi-agent coordination helps.
 - **Descriptions serve callers** — Teach usage: when to use, how to invoke, what to pass, how to prompt, what to expect.
-- **Route by cognitive mode** — Decompose agents by thinking type (faithful execution vs aesthetic judgment vs ambiguity handling), not by file type or domain.
+- **Route by cognitive mode** — Decompose agents by thinking type (faithful execution vs aesthetic judgment vs ambiguity handling), not by file type or domain. Discover modes through research: ask the user, study how professionals do the work, find where solo practitioners shift stance and where teams put person-boundaries.
 - **Generic over specialized** — If specialization lives entirely in the caller's prompt, keep the agent generic. One @browser beats three domain-specific browser agents.
 
 See `resources/agent-level.md` for detail.

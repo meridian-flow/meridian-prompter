@@ -100,6 +100,22 @@ The cognitive mode determines what the agent needs:
 
 When routing is by domain, agents fight over boundary cases ("is this React file frontend or backend?"). When routing is by cognitive mode, the question becomes "does this task need aesthetic judgment?" — clearer and more stable.
 
+### Discovering Cognitive Modes
+
+The principle says "route by cognitive mode" — but how do you find the modes for a new domain? Research, not intuition.
+
+Before designing a multi-agent system, investigate how the domain's work is actually done:
+
+1. **Ask the user** — they're the domain expert. How do they do this work? Where do they shift mental stance? What feels like a different "mode" when they do it? A writer knows that brainstorming and editing feel completely different. A developer knows that designing and implementing use different parts of their brain. The user's workflow is the primary source.
+
+2. **Research the domain** — search for how professionals structure this work. Academic papers on creative workflows, team structures in software engineering, editorial pipelines in publishing. The real-world decomposition reveals cognitive mode boundaries that aren't obvious from the outside.
+
+3. **Solo vs team** — identify where one person shifts stance (novelist brainstorming vs outlining), then study how teams decompose the same work (author + developmental editor + copy editor + continuity editor). Where the solo practitioner shifts stance maps to where teams put person-boundaries. That intersection is where agent boundaries belong.
+
+4. **Collapse test** — if you merged two proposed agents back into one, would it need to context-switch between incompatible evaluation criteria? Brainstorming's "explore everything" vs outlining's "commit to structure" are incompatible stances — holding both in one context window degrades both. If collapsing doesn't create conflict, the split isn't justified.
+
+Tasks that one person can do alone are often the *best* candidates for multi-agent decomposition — the cognitive mode shifts are already there, just implicit. Making them explicit puts fresh attention budget on each mode.
+
 ## Generic Over Specialized
 
 If an agent's specialization lives entirely in its prompt, it doesn't need to be a separate agent — make the existing agent generic and let the caller's prompt provide the specialization.
