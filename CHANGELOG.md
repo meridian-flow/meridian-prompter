@@ -4,6 +4,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Removed
+- `meridian-cli` from `mars.toml` skills filter (skill deleted from meridian-base).
+- `meridian-cli` row from `agent-artifacts/resources/meridian.md` base skills table.
+
 ## [0.1.0] - 2026-04-30
 
 ### Changed

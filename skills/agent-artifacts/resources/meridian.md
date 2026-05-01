@@ -116,7 +116,6 @@ Workflow: edit source → commit → `meridian mars sync` → `.agents/` regener
 | Skill | Purpose |
 |-------|---------|
 | `meridian-spawn` | Spawn mechanics, flags |
-| `meridian-cli` | CLI mental model |
 | `meridian-work-coordination` | Work item lifecycle |
 | `decision-log` | Recording decisions |
 | `context-handoffs` | What to pass between spawns |
