@@ -4,6 +4,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- Skill frontmatter: migrated all skills from legacy `disable-model-invocation`/`allow_implicit_invocation` to canonical `invocation: explicit`.
+- `skill-artifacts`: updated guidance to reference `invocation: explicit` instead of legacy fields.
+- Bumped meridian-base dependency to v0.2.1.
+
 ## [0.1.3] - 2026-05-02
 
 ### Added

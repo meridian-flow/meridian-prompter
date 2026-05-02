@@ -3,8 +3,7 @@ name: agent-artifacts
 description: >
   Load when writing or reviewing agent .md files. Design guidance for
   agent definitions and meridian-specific conventions.
-disable-model-invocation: true
-allow_implicit_invocation: false
+invocation: explicit
 ---
 
 # Agent Artifacts
