@@ -4,6 +4,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-05-02
+
 ### Added
 - `intent-modeling` and `llm-writing` skills pulled from meridian-base. `prompt-dev` loads both; `prompt-reviewer` loads `llm-writing`.
 - `prompt-review`: LLM writing patterns (overcorrection, contrastive definitions, conversational mode leaking) as review targets.
