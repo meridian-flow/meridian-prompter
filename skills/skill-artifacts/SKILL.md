@@ -1,162 +1,22 @@
 ---
 name: skill-artifacts
 description: >
-  Schema and structure for skill definitions — the SKILL.md files and
-  bundled resources that provide shared knowledge to agents. Load when
-  writing or reviewing skills.
+  Load when writing or reviewing skills. Design guidance for SKILL.md
+  files and bundled resources.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---
 
 # Skill Artifacts
 
-Skills are reference material loaded into agents. They live in a `skills/` directory.
+Skills are reference material loaded into agents. Each skill is a directory
+under `skills/` with a `SKILL.md` and optional `resources/`, `scripts/`,
+and `assets/` subdirectories.
 
-## Directory Structure
+Descriptions lead with when to load the skill, not what it contains. Most
+skills should set `disable-model-invocation: true` and
+`allow_implicit_invocation: false` — only exempt skills that serve as safety
+nets an agent might need to discover mid-task.
 
-```
-skills/
-  skill-name/
-    SKILL.md              # Required. Main skill file.
-    resources/           # Optional. Deep content.
-      topic-a.md
-      topic-b.md
-    scripts/              # Optional. Executable code.
-    assets/               # Optional. Templates, icons, etc.
-```
-
-## SKILL.md Structure
-
-```markdown
----
-name: skill-name          # Required. Matches directory name.
-description: >            # Required. When to load this skill.
-  What this skill provides and trigger phrases.
----
-
-# Skill Name
-
-Overview of what this skill covers.
-
-## Section 1
-Core content.
-
-## Section 2  
-More content.
-
-## References
-Pointers to deeper content in resources/ directory.
-```
-
-## Frontmatter Schema
-
-```yaml
----
-name: skill-name                    # Required. Matches directory.
-description: >                      # Required. Triggering surface.
-  What this skill provides. Include trigger phrases and contexts.
-  Be specific about when to load it.
-compatibility: [tool-x, tool-y]     # Optional. Required tools/dependencies.
-disable-model-invocation: true      # Optional. Prevents implicit loading.
-allow_implicit_invocation: false    # Optional. Codex equivalent of above.
----
-```
-
-### Invocation Control
-
-By default, skill descriptions are always in context and can trigger implicit
-loading. For skills that should only load when explicitly listed in an agent's
-`skills:` field, set both flags:
-
-- `disable-model-invocation: true` — Claude Code: prevents the model from
-  loading the skill based on description matching.
-- `allow_implicit_invocation: false` — Codex: equivalent control.
-
-Most skills should have both flags set. Exempt only skills that serve as
-safety nets an agent might need to discover mid-task (e.g., privilege
-escalation, issue filing).
-
-### Description as Trigger
-
-When implicit invocation is enabled, the description is the primary mechanism
-for skill triggering. Include:
-- What the skill does
-- Specific contexts for when to use it
-- Trigger phrases users might say
-
-Be slightly "pushy" — undertriggering is more common than overtriggering.
-
-When implicit invocation is disabled, the description still serves callers
-deciding whether to add the skill to an agent's `skills:` list.
-
-## Progressive Disclosure
-
-Three levels with different token costs:
-
-| Level | Size | When Loaded |
-|-------|------|-------------|
-| Metadata | ~100 words | Always in context |
-| Body | <500 lines | On skill trigger |
-| References | Unlimited | As needed |
-
-### Implications
-
-- Keep body under 500 lines
-- Put variant-specific content in resources
-- Body provides overview + routing to resources
-- References can be arbitrarily deep
-
-## Reference Organization
-
-When a skill supports multiple variants:
-
-```
-skill-name/
-├── SKILL.md
-└── resources/
-    ├── variant-a.md      # Content for variant A
-    ├── variant-b.md      # Content for variant B
-    └── common.md         # Shared content
-```
-
-The body routes to the relevant reference based on context.
-
-## Bundled Resources
-
-**scripts/** — Executable code for deterministic tasks. Can execute without loading into context.
-
-**resources/** — Documentation loaded as needed. For files >300 lines, include a table of contents.
-
-**assets/** — Files used in output (templates, icons, fonts). Referenced but not loaded.
-
-## Example
-
-```markdown
----
-name: review
-description: >
-  Methodology for adversarial code review. Load when reviewing
-  code, designs, or plans. Covers severity classification,
-  finding format, and review focus areas.
----
-
-# Review Methodology
-
-## Severity Levels
-
-- **Blocking** — Must fix before merge
-- **Substantive** — Should fix, can defer with reason  
-- **Minor** — Consider fixing
-
-## Finding Format
-
-For each finding: what's wrong, why it matters, fix direction, severity.
-
-## Focus Areas
-
-See `resources/focus-areas.md` for detailed guidance on:
-- Correctness review
-- Security review
-- Performance review
-- Design alignment review
-```
+Keep the body under 500 lines. Put deep or variant-specific content in
+`resources/` and route to it from the body.

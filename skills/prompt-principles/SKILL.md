@@ -1,10 +1,9 @@
 ---
 name: prompt-principles
 description: >
-  Research-backed principles for designing LLM prompts, agents, and skills.
-  Load when writing, reviewing, or improving any prompt artifact. Covers
-  prompt-level craft, skill extraction, agent design, and multi-agent
-  coordination patterns.
+  Load when writing, reviewing, or improving any prompt artifact.
+  Research-backed principles across four levels: prompt craft, skill
+  extraction, agent design, and multi-agent coordination.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---

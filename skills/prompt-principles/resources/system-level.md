@@ -92,17 +92,6 @@ Critical research finding:
 - Following a pattern you saw somewhere
 - The single agent is working fine but you want to refactor
 
-## Antipatterns
-
-| Antipattern | Problem |
-|-------------|---------|
-| **Over-engineering** | Multi-agent when single-agent suffices. Creates hard-to-debug handoffs. |
-| **Tool overload** | >20 tools degrades selection quality. Scope the toolset to what the agent actually needs. |
-| **Monolithic prompts** | One enormous prompt encoding all behavior. Conflicting instructions, lost coherence. |
-| **Task overload** | Too many distinct tasks in single request. Leads to hallucination, missing tasks, low quality. |
-| **Self-review** | Same agent reviews its own work. Conflict of interest, no external verification. |
-| **Raw history handoff** | Passing full conversation instead of structured briefing. Context bloat, attention dilution. |
-
 ## Explicit Handoff Content
 
 Name specific artifacts at every handoff boundary. Categories aren't enough — file paths are.

@@ -4,6 +4,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Added
+- `intent-modeling` and `llm-writing` skills pulled from meridian-base. `prompt-dev` loads both; `prompt-reviewer` loads `llm-writing`.
+- `prompt-review`: LLM writing patterns (overcorrection, contrastive definitions, conversational mode leaking) as review targets.
+- `python-tool-writer`: web search tools for self-serve library research.
+
+### Changed
+- All skill descriptions: trigger-first ("Load when...") instead of content-first.
+- `agent-artifacts`: schema removed — points to [mars agent profile reference](https://github.com/meridian-flow/mars-agents/blob/main/docs/config/agent-profiles.md). Body is now design guidance only.
+- `agent-artifacts/resources/meridian.md`: trimmed to design patterns (subagent design, handoffs, model staffing). Schema and permission tables removed.
+- `skill-artifacts`: trimmed from schema template to three design principles.
+- `prompt-reviewer`: trimmed body — skills carry methodology, body sets adversarial stance.
+- `prompt-tester`: trimmed prescriptive checklists to principles.
+- `prompt-review`: cut "What wastes time" (negative framing), compressed adversarial mindset checklist to principle-level guidance.
+- `python-tool-writer`: folded `python-tools` methodology into agent body.
+- `python-tools/SKILL.md`: trimmed redundant "When Tool > Agent" list, "Quality Bar" checklist.
+- `system-level.md`: cut antipatterns table (negative framing, covered by positive principles).
+- `mars.toml`: pinned meridian-base to v0.1.3.
+
+### Removed
+- `python-tools` skill — only one agent used it, content was generic. Conda/mamba preference folded into `python-tool-writer` body.
+
 ## [0.1.2] - 2026-05-01
 
 ### Added

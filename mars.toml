@@ -5,7 +5,8 @@ description = "Workflow for creating and improving LLM agents and skills from fi
 
 [dependencies.meridian-base]
 url = "https://github.com/meridian-flow/meridian-base"
-skills = ["meridian-spawn"]
+version = "v0.1.3"
+skills = ["meridian-spawn", "intent-modeling", "llm-writing"]
 
 [settings]
 targets = [

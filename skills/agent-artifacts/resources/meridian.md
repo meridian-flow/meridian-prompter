@@ -1,122 +1,43 @@
-# Meridian Agent Schema
+# Meridian Design Patterns
 
-Schema and conventions for agents in the Meridian ecosystem. For design principles (subagent design, context handoffs, orchestrator patterns), see `prompt-principles/resources/meridian.md`.
+Design patterns for agents in the Meridian ecosystem. For schema and
+configuration, see the [mars docs](https://github.com/meridian-flow/mars-agents/blob/main/docs/config/).
 
-## Spawn Syntax
+## Subagent Design
 
-```bash
-meridian spawn -a <agent-name> -p "<prompt>" -f <context-files>
-```
+Agents spawned by managers or leads should be **caller-agnostic** — they
+work regardless of who spawned them.
 
-### Common Flags
+Assume focused context. The caller decided what to pass — work with what
+arrived. If critical context is missing, flag it rather than guessing.
 
-| Flag | Purpose |
-|------|---------|
-| `-a <name>` | Agent to spawn (matches frontmatter `name`) |
-| `-p "<prompt>"` | The task prompt |
-| `-f <file>` | Context files (repeatable) |
-| `--from <spawn-id>` | Conversation context from prior spawn |
-| `-m <model>` | Override default model |
-| `--desc "<text>"` | Short description for tracking |
-| `--approval <mode>` | Override approval mode |
-| `--sandbox <tier>` | Override sandbox tier |
+Produce artifacts, not just responses. Files survive compaction and can be
+passed to the next spawn. Discover where to write via the CLI:
 
-## Description Pattern
+- `meridian work current` — active work directory
+- `meridian context work` — work context root
+- `meridian context kb` — knowledge base root
 
-The description helps callers decide **when and why** to spawn this agent.
+## Context Handoffs
 
-**Lead with the problem it solves:**
+**Name specific files, not categories.** Every `-f` should be a concrete
+path. `-f design/spec/auth.md` is actionable; "pass the design docs" is
+ambiguous.
 
-```yaml
-# Good — tells you when to reach for it
-description: >
-  Use when code needs adversarial review — correctness, regression risk,
-  structural soundness. Spawn with `meridian spawn -a reviewer`, passing
-  artifacts with -f. Read-only — reports findings, doesn't edit.
+**Pass overview plus specifics.** The overview orients; specifics tell what
+to do. 2-4 files is typical. 10 means the handoff needs rethinking.
 
-# Bad — mechanics without the "when"
-description: >
-  Reviews code and produces findings. Takes files as input.
-```
+**Materialize critical context.** If context only lives in conversation and
+losing it would hurt, write it to a file first.
 
-Structure:
-1. **When/why to use** — What problem? What situation?
-2. **How to spawn** — `meridian spawn -a <name>` with typical flags
-3. **What context it needs** — Specific files to pass with `-f`, conversation context with `--from`
-4. **How to prompt it** — What to tell it in the task prompt: scope, constraints, ownership, focus area
-5. **Where output goes** — If applicable
+Use `--from <spawn-id>` for reasoning from a prior spawn, `--from
+$MERIDIAN_CHAT_ID` for the primary session's decisions and intent.
 
-```yaml
-# Good — teaches the caller how to use it effectively
-description: >
-  Use for implementation tasks ready to execute against a phase blueprint.
-  Spawn with `meridian spawn -a coder`, passing the blueprint and relevant
-  source files with -f. Tell it which subphase to implement, which
-  behavioral requirements it owns, and any integration boundaries to respect.
+## Model Staffing
 
-# Weak — tells you what it is but not how to use it
-description: >
-  Implements code changes based on plans.
-```
+Match model choice to the agent's cognitive mode. Model defaults belong in
+agent profiles — `meridian mars models list` shows the live catalog.
 
-## Permission Model
-
-### Sandbox Tiers
-
-Match tier to task, not maximum possible:
-
-| Tier | Allows |
-|------|--------|
-| `read-only` | Analysis, review — can't modify |
-| `workspace-write` | Implementation within repo |
-| `full-access` | Touch things outside workspace |
-| `danger-full-access` | Unrestricted |
-
-### Approval Modes
-
-| Mode | Behavior |
-|------|----------|
-| `default` | Harness decides |
-| `confirm` | User approves each tool call |
-| `auto` | Auto-approve safe operations |
-| `yolo` | Approve everything |
-
-### Tool Restrictions
-
-- **`tools:`** — Allowlist. Scopes Bash (`Bash(git *)`). On Claude, doesn't restrict built-ins.
-- **`disallowed-tools:`** — Denylist. Enforced on Claude. Use `[Agent]` on managers/leads.
-
-## Manager/Lead Frontmatter
-
-```yaml
-disallowed-tools: [Agent, Edit, Write, NotebookEdit]
-sandbox: danger-full-access
-approval: auto
-skills: [meridian-spawn, ...]
-```
-
-`disallowed-tools: [Agent]` forces use of `meridian spawn`, which provides tracking and reports.
-
-## Source Package Routing
-
-Agents/skills live in source repos, synced to `.agents/` via `meridian mars sync`.
-
-**Never edit `.agents/` directly.**
-
-| Package | Contains |
-|---------|----------|
-| `meridian-base` | Core infrastructure — spawn skills, CLI skills |
-| `meridian-dev-workflow` | Dev agents — coder, reviewer, leads, managers |
-| `meridian-prompter` | Prompt agents — prompt-dev, prompt-reviewer, prompt-tester, python-tool-writer, web-prompt-researcher |
-
-Workflow: edit source → commit → `meridian mars sync` → `.agents/` regenerates.
-
-## Base Skills
-
-| Skill | Purpose |
-|-------|---------|
-| `meridian-spawn` | Spawn mechanics, flags |
-| `meridian-work-coordination` | Work item lifecycle |
-| `decision-log` | Recording decisions |
-| `context-handoffs` | What to pass between spawns |
-| `shared-workspace` | Filesystem conventions |
+- **Clear-goal execution** — fast, instruction-faithful. Best for coders and builders with clear specs.
+- **Ambiguity handling** — pushes back, iterates. Best for managers, leads, design exploration.
+- **Judgment and review** — evaluation depth. Best for adversarial review and architectural decisions.

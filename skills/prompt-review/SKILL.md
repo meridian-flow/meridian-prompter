@@ -1,58 +1,48 @@
 ---
 name: prompt-review
 description: >
-  Adversarial review methodology for agents and skills. Covers the mindset,
-  finding quality, severity handling, and structured reporting. Load when
-  reviewing agent definitions or skill content.
+  Load when reviewing agent definitions or skill content. Adversarial
+  review methodology — finding quality, severity, and structured reporting.
 disable-model-invocation: true
 allow_implicit_invocation: false
 ---
 
 # Prompt Review
 
-Your job is to find what's wrong, not confirm what's right.
+Find what's wrong, not confirm what's right.
 
-The writer already believes their agent works. Your value comes from challenging that assumption — finding the principle violation they didn't notice, the ambiguity that will confuse the model, the scope creep that dilutes focus. A review that says "looks good" without digging creates false confidence.
+The writer already believes their agent works. Your value comes from
+challenging that assumption — the principle violation they didn't notice,
+the ambiguity that will confuse the model, the scope creep that dilutes
+focus.
 
-## What Makes a Good Finding
+## Good Findings
 
-- **Specific** — Reference the line or section. "This agent has issues" is not a finding.
-- **Reasoned** — Explain why it matters, not just that it exists. A missing constraint is only interesting if you can describe the failure mode.
-- **Actionable** — The writer should know what to do after reading your finding.
-- **Non-obvious** — You're here for things that require understanding principles and intent, not typos.
-
-### What wastes time
-
-- Vague "this could be better" without explaining how
-- Style nitpicks that don't affect behavior
-- Restating what the prompt says without identifying a problem
+Each finding: what's wrong (reference the line), why it matters (the failure
+mode), and what to do about it. Prioritize things that require understanding
+principles and intent over surface issues.
 
 ## Severity
 
-Make it obvious which findings matter:
-
 - **Blocking** — Must fix. Violates core principles, creates real failure modes.
-- **Substantive** — Should fix. Weakens the design, causes confusion, reduces reusability.
-- **Minor** — Consider fixing. Polish, clarity improvements, nice-to-haves.
+- **Substantive** — Should fix. Weakens design, causes confusion, reduces reusability.
+- **Minor** — Consider fixing. Polish, clarity, nice-to-haves.
 
-Lead with blocking issues. Whoever triages your findings can downgrade severity, but they can't act on buried problems.
+Lead with blocking issues.
 
-## The Adversarial Mindset
+## What to Look For
 
-Think about how the agent fails, not how it succeeds:
+How does this agent fail? What happens with ambiguous input, missing context,
+conflicting skills? Which principles does it violate and what breaks?
 
-- What if the input is ambiguous?
-- What if the agent is spawned without expected context?
-- What if this conflicts with a skill it loads?
-- What principles does this violate and why does that matter?
-- Does the prompt use positive framing? Flag negative instructions that keep prohibited behavior in attention.
+Check for LLM writing patterns that weaken prompts: overcorrected guidance
+encoding "stop doing X" as absolute prohibition, contrastive definitions
+("not X — it's Y") that only make sense in a conversation, prescriptive
+checklists where a principle would transfer better, labeled conclusions
+that restate what the examples already showed.
 
-Don't be adversarial for its own sake. The goal is finding real problems, not demonstrating cleverness. If the agent is genuinely good, say so — but earn that conclusion by actually looking.
+## Report
 
-## Report Structure
-
-1. Brief overall assessment
-2. Findings grouped by severity or theme
+1. Overall assessment
+2. Findings by severity
 3. Verdict: approve, approve with notes, or request changes
-
-If requesting changes, be clear about which findings are blocking.
