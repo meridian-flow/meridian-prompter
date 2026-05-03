@@ -3,7 +3,7 @@ name: skill-artifacts
 description: >
   Load when writing or reviewing skills. Design guidance for SKILL.md
   files and bundled resources.
-invocation: explicit
+model-invocable: false
 ---
 
 # Skill Artifacts
@@ -13,7 +13,7 @@ under `skills/` with a `SKILL.md` and optional `resources/`, `scripts/`,
 and `assets/` subdirectories.
 
 Descriptions lead with when to load the skill, not what it contains. Most
-skills should set `invocation: explicit` — only exempt skills that serve as
+skills should set `model-invocable: false` — only exempt skills that serve as
 safety nets an agent might need to discover mid-task.
 
 Keep the body under 500 lines. Put deep or variant-specific content in

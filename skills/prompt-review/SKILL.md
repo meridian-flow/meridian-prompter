@@ -3,7 +3,7 @@ name: prompt-review
 description: >
   Load when reviewing agent definitions or skill content. Adversarial
   review methodology — finding quality, severity, and structured reporting.
-invocation: explicit
+model-invocable: false
 ---
 
 # Prompt Review

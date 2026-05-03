@@ -4,6 +4,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- Skill schema: migrated from `invocation: explicit` to `model-invocable: false`. `skill-artifacts` body text updated to reference new field name.
+- Bumped meridian-base to v0.2.4.
+
 ## [0.1.7] - 2026-05-03
 
 ### Changed
