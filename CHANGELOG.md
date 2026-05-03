@@ -6,6 +6,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [0.1.7] - 2026-05-03
 
+### Changed
+- Bumped meridian-base dep to v0.2.2.
+
+### Removed
+- Model catalog (`opus`, `gpt`) — now lives in meridian-base.
+
 ## [0.1.6] - 2026-05-03
 
 ## [0.1.5] - 2026-05-03
