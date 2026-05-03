@@ -7,7 +7,6 @@ description: >
   `meridian spawn -a prompt-dev`, passing requirements in the
   prompt and any existing prompts to improve with -f.
 harness: claude
-effort: high
 skills: [prompt-principles, agent-artifacts, skill-artifacts, meridian-spawn, intent-modeling, llm-writing]
 tools: [Bash, Write, Edit, Glob, Grep, Read]
 disallowed-tools: [Agent, NotebookEdit]
