@@ -2,21 +2,21 @@
 
 How to coordinate multiple agents.
 
-## Orchestrator Pattern
+## Agent Management Pattern
 
-Empirically validated: Anthropic's multi-agent system with orchestrator outperformed single-agent by 90.2% on breadth-first queries.
+Empirically validated: Anthropic's multi-agent system with a managing agent outperformed single-agent by 90.2% on breadth-first queries.
 
 **Structure:**
-- **Orchestrator** — Routes tasks, evaluates outputs, manages convergence. Doesn't implement.
-- **Workers** — Execute focused tasks. Don't coordinate with each other directly.
+- **Managing agent** — Spawns sub-agents, evaluates their output, manages convergence. Described by its domain job, not by the coordination mechanism. A microCT analyst that spawns specialists is still an analyst, not "an orchestrator."
+- **Sub-agents** — Execute focused tasks with clean context windows. Don't coordinate with each other directly.
 
 **Why it works:**
 - No single agent needs full context
-- Orchestrator holds high-level objectives and summaries
-- Workers hold only specific subtask input
-- Fresh context per worker = focused attention
+- The managing agent holds high-level objectives and summaries
+- Sub-agents hold only specific subtask input
+- Fresh context per sub-agent = focused attention
 
-**The altitude rule:** If you drop into implementation, you lose the vantage point to notice drift. Orchestrators stay at coordination altitude.
+**The altitude rule:** If you drop into implementation, you lose the vantage point to notice drift. The managing agent stays at coordination altitude — but its identity comes from the domain work it's managing, not from the coordination pattern itself.
 
 ## Context Handoff Is Caller's Job
 
@@ -120,7 +120,7 @@ Verification at the end catches drift too late. Verification at each transition 
 Different models excel at different cognitive modes. Matching matters for multi-agent staffing:
 
 - **Clear-goal execution** — models that follow instructions faithfully, execute fast, don't overthink. Best for implementation against clear specs.
-- **Ambiguity handling** — models that push back, ask clarifying questions, handle underspecified tasks. Best for orchestration and user-facing roles.
+- **Ambiguity handling** — models that push back, ask clarifying questions, handle underspecified tasks. Best for managing agents and user-facing roles.
 - **Judgment and nuance** — models with strong reasoning and evaluation depth. Best for adversarial review and architectural decisions.
 
 Mismatches are expensive in both directions: an overthinking model on a simple task wastes cost and time; a shallow-execution model on a judgment task produces fast, wrong answers.

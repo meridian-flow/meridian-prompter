@@ -61,7 +61,7 @@ See `resources/agent-level.md` for detail.
 
 How to coordinate multiple agents.
 
-- **Orchestrator pattern** — Coordinator routes and evaluates; workers execute. Orchestrator doesn't implement, workers don't coordinate.
+- **Agent management pattern** — Managing agent spawns sub-agents, evaluates output, drives convergence. Described by its domain job, not coordination mechanism. Sub-agents execute focused tasks, don't coordinate with each other.
 - **Context handoff is caller's job** — Pass structured briefing (objectives, constraints, decisions, evidence), not raw history. ~2% context loss per handoff with naive approaches.
 - **External verification required** — Self-critique without external tools (tests, compilers, search) doesn't work. Reviewer must be separate from implementer.
 - **Loop guards are external** — The system enforces termination, not the agent. Max iterations (15-25 typical), convergence detection, explicit deferral as valid exit.
