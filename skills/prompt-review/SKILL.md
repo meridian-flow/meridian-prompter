@@ -13,7 +13,14 @@ Review prompt quality first. Use `/prompt-principles` and `/llm-writing` as the 
 
 ## What to Look For
 
-Look for violations of the prompt, skill, agent, and system-level principles in `/prompt-principles`. Focus on high-leverage issues such as ambiguity, duplication, brittle instructions, weak routing, misplaced knowledge, and overloaded bodies. A good finding points to the exact text, explains the failure mode, and suggests a better direction.
+Read all four `/prompt-principles` resource files before reviewing. The body routes; the resources carry the actual heuristics:
+
+- `resources/prompt-level.md`: attention, structure, leading words, heuristic altitude
+- `resources/skill-level.md`: loading model, extraction, decomposition
+- `resources/agent-level.md`: cognitive mode, body focus, reuse
+- `resources/system-level.md`: handoffs, verification, coordination altitude
+
+Review against each layer that applies. Focus on high-leverage issues: no-op lines, misplaced knowledge, overloaded bodies, weak routing, brittle prescription, and missing reasons. A good finding points to the exact text, explains the failure mode, and suggests a better direction.
 
 After the prompt-quality pass, do a lighter mechanics pass when relevant. For that second angle, load `resources/mechanics.md`.
 

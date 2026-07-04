@@ -1,10 +1,8 @@
 # Meridian Agent Conventions
 
-This resource covers Meridian-specific agent conventions. Use `/prompt-principles` for the broader design principles behind them.
-
 ## Subagents and Spawns
 
-Subagents should be caller-agnostic. They should work from the context they receive, not from assumptions about who spawned them. When a manager or lead delegates, prefer artifact outputs over response-only outputs so the result can survive compaction and be passed forward.
+Subagents should be caller-agnostic. They should work from the context they receive, not from assumptions about who spawned them. Prefer artifact outputs over response-only outputs so the result survives compaction and can be passed forward.
 
 Use the CLI to discover where artifacts belong. `meridian work current` gives the active work directory. `meridian context work` gives the work context root. `meridian context kb` gives the knowledge base root.
 
@@ -20,7 +18,7 @@ Use `--from <spawn-id>` when a spawn needs reasoning from an earlier spawn. Use 
 
 Match the model to the cognitive mode the agent needs. Put defaults in the agent profile. Use faster, faithful models for clear-goal execution, more interactive models for ambiguity handling, and stronger evaluative models for judgment-heavy review.
 
-For broader model-to-cognitive-mode guidance, use `/prompt-principles/resources/agent-level.md`.
+For broader model-to-cognitive-mode guidance, see `/prompt-principles/resources/system-level.md`.
 
 ## Package Targets
 

@@ -4,6 +4,20 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- `prompt-principles`: added "Every Line Must Change Behavior" and "Prescribe Only What Needs to Be Predictable" to body. Tightened progressive disclosure section.
+- `prompt-principles/resources/prompt-level.md`: renamed "Attention Is a Scarce Resource" to "Attention Is Positional". Added "Use Leading Words" section. Removed meridian-specific examples.
+- `prompt-principles/resources/skill-level.md`: rewrote "Loading Is Part of the Design" with four-layer model (load/available/description/--skills).
+- `prompt-principles/resources/agent-level.md`: merged "One Agent, One Kind of Work" into "Split by Cognitive Mode".
+- `prompt-principles/resources/system-level.md`: removed no-op trailing sentences.
+- `prompt-principles/resources/meridian.md`: replaced all em dashes with proper punctuation.
+- `prompt-principles/resources/research.md`: replaced em dashes.
+- `prompt-review`: added instruction to read all four resource files before reviewing, with content annotations.
+- `agent-artifacts`: collapsed 4 routes to prompt-principles into one. Cut duplicate spawn-restrictions mention.
+- `agent-artifacts/resources/meridian.md`: fixed wrong reference (agent-level.md to system-level.md for model guidance).
+- `agent-artifacts/resources/model-policies.md`: removed trailing prompt-principles route.
+- `skill-artifacts`: rewrote loading paragraph with four-layer model. Promoted "Descriptions should lead with when to load" to own section.
+
 ## [0.3.9] - 2026-06-28
 
 ## [0.3.8] - 2026-06-28

@@ -9,16 +9,25 @@ model-invocable: false
 
 # Skill Artifacts
 
-Use this skill for how skills are structured in Meridian. Use `/prompt-principles` for broader guidance on prompt design, progressive disclosure, and when knowledge belongs in a skill.
+Use `/prompt-principles` for broader prompt design and loading strategy. This skill covers how skill artifacts are structured in Meridian.
 
-A skill is a directory under `skills/` with a `SKILL.md` and optional `resources/`, `scripts/`, and `assets/` subdirectories.
+A skill is a directory under `skills/` with a `SKILL.md` and optional `resources/`, `scripts/`, and `assets/` subdirectories. The description is the trigger surface. The body is the loaded instruction layer. `resources/` carry deeper content. `scripts/` are for deterministic operations that should run instead of being re-derived in context.
 
-The description is the trigger surface. The body is the loaded instruction layer. `resources/` carry deeper content. `scripts/` are for deterministic operations that should run instead of being re-derived in context.
+## Loading
 
-Use `load` for skills an agent needs every run. Use `available` for skills it may reach for on demand. Use `model-invocable` when on-demand loading should actually work. An `available` skill without `model-invocable` is visible but not loadable. Keep the global model-invocable pool small. Design around `available` as the primary trigger.
+Skills reach agents through four paths (see `/prompt-principles/resources/skill-level.md` for design guidance):
 
-Set `type:` to declare the skill's role. Use `principle` for always-loaded thinking guidance, `guardrail` for always-loaded safety boundaries, `mode-shift` for on-demand shifts in activity, `checkpoint` for phase gates, and `reference` for operational how-to.
+- **`load`**: always in the system prompt. Use for skills the agent needs every run.
+- **`available`**: agent can self-load when `model-invocable: true`. Use for skills it may reach for on demand.
+- **`description`**: caller discovery surface. List attachable skill names so parent agents know what to compose via `--skills`.
+- **`--skills`**: caller injection at spawn time. Bypasses `available`; any bundled skill can be injected.
 
-Descriptions should lead with when to load the skill, not just what it contains. Keep the body short and route depth into `resources/`. Split resources by real usage boundaries so agents can load only what they need. Add `scripts/` when execution is better than prompt instructions.
+An `available` skill without `model-invocable` is visible but not loadable, a common misconfiguration. Keep the global `model-invocable` pool small; each entry costs description tokens on every turn.
 
-For broader guidance on progressive disclosure, body versus resource boundaries, and when to split work into a skill instead of an agent, use `/prompt-principles` and its skill-level guidance.
+## Types
+
+Set `type:` to declare the skill's role: `principle` for always-loaded thinking guidance, `guardrail` for always-loaded safety boundaries, `mode-shift` for on-demand shifts in activity, `checkpoint` for phase gates, `reference` for operational how-to.
+
+## Descriptions
+
+Descriptions should lead with *when to load* the skill, not just what it contains. The description is what an agent or orchestrator reads to decide whether to load. "Load when reviewing test architecture" beats "Covers test structure patterns."

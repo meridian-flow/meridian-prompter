@@ -8,23 +8,23 @@ Default to one agent, then add more only when the split earns its overhead. Ever
 
 ## Managers Need Altitude
 
-A manager or lead should gather context, route focused workers, evaluate their outputs, and drive convergence. It should not also do the worker's job. Once the coordinating agent drops into implementation, it loses the vantage point needed to notice drift, compare alternatives, and steer the overall workflow. Coordination is its own job.
+A manager or lead should gather context, route focused workers, evaluate their outputs, and drive convergence. It should not also do the worker's job. Once the coordinating agent drops into implementation, it loses the vantage point needed to notice drift, compare alternatives, and steer the overall workflow.
 
 ## Handoffs Are a First-Class Design Problem
 
-The caller owns the handoff. Pass objectives, constraints, prior decisions, and concrete artifacts instead of making the receiving agent rediscover context that already exists upstream. Name explicit files and outputs rather than broad categories. Strong handoffs preserve scope and reduce ambiguity. Weak handoffs waste time and silently drop requirements at exactly the points where the workflow is narrowing.
+The caller owns the handoff. Pass objectives, constraints, prior decisions, and concrete artifacts instead of making the receiving agent rediscover context that already exists upstream. Name explicit files and outputs rather than broad categories. Weak handoffs waste time and silently drop requirements at exactly the points where the workflow is narrowing.
 
 ## Verification Must Come from Outside the Worker
 
-Do not rely on self-critique alone. Use tests, builds, search, review, or other external checks, and separate the implementer from the reviewer when the task calls for real verification. The point is not ceremony; it is independence. A worker judging its own output is too likely to reproduce its own blind spots.
+Do not rely on self-critique alone. Use tests, builds, search, review, or other external checks, and separate the implementer from the reviewer when the task calls for real verification. A worker judging its own output is too likely to reproduce its own blind spots.
 
 ## Loop Control Belongs Outside the Prompt
 
-Iteration limits, termination conditions, and convergence checks belong to the system or to the coordinating agent, not to the worker prompt. Agents are poor judges of when to stop, especially when they are asked both to keep working and to decide whether more work is needed. External loop guards keep exploration useful without letting it drift indefinitely.
+Iteration limits, termination conditions, and convergence checks belong to the system or to the coordinating agent, not to the worker prompt. Agents are poor judges of when to stop, especially when they are asked both to keep working and to decide whether more work is needed.
 
 ## Alignment Fails at Narrowings
 
-The dangerous points in a workflow are the narrowings, where wide exploration collapses into a smaller artifact such as a plan, a decision, or an implementation brief. That is where requirements disappear. Verify alignment at those transitions before moving on, because end-of-pipeline review often catches drift only after the downstream work has already amplified it.
+The dangerous points in a workflow are the narrowings, where wide exploration collapses into a smaller artifact such as a plan, a decision, or an implementation brief. That is where requirements disappear. Verify alignment at those transitions before moving on, because end-of-pipeline review catches drift only after downstream work has already amplified it.
 
 ## Model Choice Is Part of the System Design
 

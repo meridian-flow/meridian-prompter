@@ -1,31 +1,35 @@
 # Prompt-Level Principles
 
-Use prompt text to steer behavior, not to narrate process. A good prompt keeps the target behavior easy to notice, the boundaries easy to remember, and the tradeoffs easy to apply in nearby cases.
+Use prompt text to steer behavior, not to narrate process.
 
-## Attention Is a Scarce Resource
+## Attention Is Positional
 
-Keep prompts concise because every extra sentence competes with the instructions that matter. Add detail when it changes behavior, clarifies a boundary, or reinforces something the model is likely to miss. Put purpose and the main constraint near the beginning, because the opening gets the strongest attention, and close with the reminder that matters most. If the core instruction is buried in the middle, the model often follows local wording instead of the governing frame.
+The opening gets the strongest attention; the close is the second-strongest. Put purpose and the main constraint near the beginning. Close with the reminder that matters most. When the core instruction is buried in the middle, the model follows local wording instead of the governing frame.
 
 ## Structure Is Stronger Than Emphasis
 
-Use visible structure to separate kinds of information. Headers, XML tags, short sections, and well-grouped paragraphs help the model keep role, workflow, and constraints distinct. This works better than ALL CAPS, repeated "must," or emotional emphasis, which add force without adding clarity. When a prompt feels like one long blob, the model has to infer the structure for itself, and that is where drift starts.
+Use visible structure to separate kinds of information. Headers, XML tags, short sections, and well-grouped paragraphs help the model keep role, workflow, and constraints distinct. This works better than ALL CAPS, repeated "must," or emotional emphasis, which add force without adding clarity.
 
 ## Direct Language Transfers Better
 
-Say what to do, not just what to avoid. Positive framing keeps the desired behavior in view, while negative framing often keeps the forbidden behavior active in attention and produces acknowledgment instead of omission. Use negative phrasing for bright-line prohibitions and protected boundaries, where ruling something out is the whole point. In most other cases, direct statements of the target behavior are easier to follow and easier to generalize.
+Say what to do, not just what to avoid. Positive framing keeps the desired behavior in view, while negative framing often keeps the forbidden behavior active in attention. Use negative phrasing for bright-line prohibitions, where ruling something out is the whole point. Direct statements of the target behavior are easier to follow and easier to generalize.
 
 ## The Model Needs Reasons, Not Just Rules
 
-Explain why when the reason helps the model apply the instruction correctly in cases the prompt does not spell out. A rule without a reason is easy to follow mechanically and easy to misapply. A rule with a reason gives the model a basis for judgment. This is especially important for tradeoffs such as staying concise, keeping orchestration altitude, or preferring explicit artifacts at handoff boundaries.
+Explain why when the reason helps the model apply the instruction correctly in cases the prompt does not spell out. A rule without a reason is easy to follow mechanically and easy to misapply. A rule with a reason gives the model a basis for judgment. This matters most for tradeoffs, when two good principles pull in different directions and the model needs to choose which one governs.
 
 ## Give Heuristics at the Right Altitude
 
-Tell the model what to optimize for, when that guidance applies, and what failure mode it prevents. That is usually better than either writing a rigid script or staying at the level of slogans. Over-sequenced prompts become brittle and encourage cargo-cult execution. Under-specified prompts leave too much room for interpretation. Good prompt text gives a usable decision rule.
+Tell the model what to optimize for, when that guidance applies, and what failure mode it prevents. Over-sequenced prompts become brittle and encourage cargo-cult execution. Under-specified prompts leave too much room for interpretation. Good prompt text gives a usable decision rule.
 
 ## Layer Information On Purpose
 
-Descriptions, bodies, skills, and resources each have a different job. The description helps a caller decide whether to use the artifact. The body defines the behavior that should stay in the active prompt. Skills and resources carry shared depth. When the same explanation is repeated at every layer, the artifact gets longer without becoming clearer. When the layers are too thin, the model loses the reasoning it needs to transfer the guidance.
+Descriptions, bodies, skills, and resources each have a different job. The description helps a caller decide whether to use the artifact. The body defines the behavior that should stay active every run. Skills and resources carry shared depth. When the same explanation appears at every layer, the artifact gets longer without becoming clearer.
+
+## Use Leading Words
+
+A leading word is a compact concept from the model's pretraining that anchors behavior in fewer tokens than explaining the idea from scratch. Words like "adversarial," "throwaway," "regression," or "proof of concept" recruit priors the model already holds. One token does the work of a paragraph. When you find yourself writing three sentences to describe a behavioral mode, look for a single word that already carries that meaning. A weak leading word that restates the default ("be thorough") is a no-op; a strong one shifts behavior ("relentless," "disposable").
 
 ## Weak Options Become Default Options
 
-Treat escape hatches carefully. If the thorough path is the right path, make it the only path instead of offering an easier fallback that the model will prefer. The same rule applies to filler. Words that do not change behavior dilute the words that do. Tight prompts are not just shorter; they are harder to misread.
+Treat escape hatches carefully. If the thorough path is the right path, make it the only path instead of offering an easier fallback that the model will prefer. Words that do not change behavior dilute the words that do. Tight prompts are not just shorter; they are harder to misread.

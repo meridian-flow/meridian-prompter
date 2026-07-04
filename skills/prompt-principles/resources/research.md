@@ -26,7 +26,7 @@ Research citations for key principles, grouped by evidence strength.
 ## Key Quotes from Research
 
 On self-critique:
-> "Almost every published 'success' of reflection is actually a success of verification. Strip away the external tool—the compiler, the test suite, the search engine—and the gains vanish."
+> "Almost every published 'success' of reflection is actually a success of verification. Strip away the external tool:the compiler, the test suite, the search engine:and the gains vanish."
 
 On multi-agent complexity:
 > "Default to a single agent and only introduce multi-agent architecture when you have evidence that additional complexity delivers proportional value."
@@ -35,7 +35,7 @@ On task decomposition:
 > "In most cases, task decomposition has limited impact: if the task is simple, a single agent can solve it; if it is too difficult, multi-agent systems still fail."
 
 On convergence:
-> "LLMs are notoriously bad at knowing when to stop—they'll either quit too early or never quit at all."
+> "LLMs are notoriously bad at knowing when to stop:they'll either quit too early or never quit at all."
 
 On loop guards:
 > "Loop guardrails are based on external enforcement: the system running the agent, not the agent itself, is ultimately responsible for guaranteeing termination."

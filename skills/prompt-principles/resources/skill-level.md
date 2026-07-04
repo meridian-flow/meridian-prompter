@@ -1,27 +1,36 @@
 # Skill-Level Principles
 
-Skills exist to hold reusable knowledge without bloating every agent that needs it. The goal is not extraction for its own sake. The goal is to keep shared method stable, loadable, and easy to maintain.
+Skills hold reusable knowledge without bloating every agent that needs it.
 
 ## Extract for Reuse, Not for Tidiness
 
-Move something into a skill when multiple agents need the same knowledge or method. If only one agent needs it, keeping it in the body is usually simpler because there is only one place to maintain. Extracting single-use content often feels cleaner, but in practice it creates a second surface without creating real reuse. The test is whether multiple agents would get lighter and clearer if the content moved out.
+Move something into a skill when multiple agents need the same knowledge or method. If only one agent needs it, keep it in the body; one place to maintain. The test is whether multiple agents would get lighter and clearer if the content moved out.
 
 ## Loading Is Part of the Design
 
-`load`, `available`, and `model-invocable` are operating mechanics, not descriptive labels. `load` keeps a skill in the prompt every run, so it should be reserved for knowledge the agent genuinely needs all the time. `available` makes the skill visible for on-demand use. `model-invocable` determines whether that on-demand loading can actually happen. If these do not line up, the agent ends up seeing names it cannot use or competing against too much global skill noise. Good skill design includes designing how the agent will discover and load the skill, not just what the skill says.
+Skills reach agents through four independent paths, each serving a different audience:
 
-## The Top Layer Should Route, Not Teach the Whole Domain
+- **`load`**: always in the system prompt. Reserved for knowledge the agent genuinely needs every run. Every loaded skill costs context on every turn.
+- **`available`**: the agent can self-load mid-session when `model-invocable` is true. This is for the agent's own discovery: skills it might need but shouldn't pay for until it does.
+- **`description`**: the caller's discovery surface. A parent agent reads child descriptions to learn what skills can be attached. List attachable skill names here so orchestrators know what to compose.
+- **`--skills` (caller injection)**: a parent passes skills onto a subagent at spawn time. This bypasses `available` entirely; any bundled skill can be injected regardless of the agent's own configuration.
 
-The skill body should carry the core guidance and point to deeper resources. Examples, variants, long procedures, and edge-case mechanics belong lower in the skill. This keeps the always-loaded layer compact while preserving depth when the task actually needs it. When too much lives in the top layer, every consumer pays for the full domain even when it only needs a narrow slice.
+`available` and `--skills` serve different audiences. `available` is the agent looking inward ("what can I load myself?"). `--skills` is the caller reaching in from outside ("take this too"). They do not need to match.
+
+When you know at agent definition time exactly which skills an agent needs, use `load`. When the skill is sometimes needed and the caller knows when, skip `model-invocable` and let the caller inject it with `--skills`.
+
+## The Top Layer Should Route, Not Teach
+
+The skill body should carry the core guidance and point to deeper resources. Examples, variants, long procedures, and edge-case mechanics belong in resource files. This keeps the always-loaded layer compact while preserving depth when the task actually needs it.
 
 ## Decompose So Agents Can Load Selectively
 
-A skill should let an agent load only the part that matters. Split resources by real usage boundaries, not just by topic names. If two files are always loaded together, they probably want to be one file. If one file mixes several different use cases, agents will keep loading irrelevant context just to reach the one paragraph they needed. Good decomposition reduces noise without hiding the path to the right depth.
+Split resources by real usage boundaries, not just by topic names. If two files are always loaded together, they probably want to be one file. If one file mixes several use cases, agents load irrelevant context just to reach the paragraph they need.
 
 ## Skills Teach; Agents Decide
 
-Skills provide method, judgment criteria, vocabulary, and durable reference material. Agents apply that guidance to a concrete situation, make decisions, and produce outputs. Mixing those roles causes problems both ways. Agents become bloated when they carry all shared method inline, and skills become pseudo-agents when they start trying to own decisions that belong to the active worker.
+Skills provide method, judgment criteria, vocabulary, and durable reference material. Agents apply that guidance to a concrete situation, make decisions, and produce outputs. When a skill starts owning decisions, it becomes a pseudo-agent. When an agent carries all shared method inline, it becomes bloated and hard to maintain.
 
 ## Separate Mechanism from Method
 
-Keep tool operation separate from guidance about how to use the tool well. Mechanism tends to be reusable across many tasks, while method depends on what the worker is trying to accomplish. When those are fused together, neither part travels well. When they are separate, a tool skill can support many methodologies and a methodology skill can survive a tool change.
+Keep tool operation separate from guidance about how to use the tool well. Mechanism is reusable across tasks; method depends on what the worker is trying to accomplish. When they are separate, a tool skill can support many methodologies and a methodology skill can survive a tool change.

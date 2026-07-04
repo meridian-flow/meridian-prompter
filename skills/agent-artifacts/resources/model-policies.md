@@ -18,5 +18,3 @@ model-policies:
   - match: {alias: gpt54}
     override: {effort: high}
 ```
-
-For broader model-to-cognitive-mode guidance, use `/prompt-principles` and `resources/agent-level.md`.
