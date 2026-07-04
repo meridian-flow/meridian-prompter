@@ -4,6 +4,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.3.10] - 2026-07-04
+
 ### Changed
 - `prompt-principles`: added "Every Line Must Change Behavior" and "Prescribe Only What Needs to Be Predictable" to body. Tightened progressive disclosure section.
 - `prompt-principles/resources/prompt-level.md`: renamed "Attention Is a Scarce Resource" to "Attention Is Positional". Added "Use Leading Words" section. Removed meridian-specific examples.
