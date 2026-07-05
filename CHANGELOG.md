@@ -4,6 +4,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- Replaced `gpt54` agent references with `gpt55`.
+
 ## [0.3.10] - 2026-07-04
 
 ### Changed
