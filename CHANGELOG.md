@@ -4,6 +4,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-07-09
+
 ### Added
 - `/prompt-principles`: new "Keep the Core Harness-Agnostic" section — load-bearing prompts state intent; environment mechanics live in the harness system prompt or the tool's `-h`; `@agent` references and `--skills` attachment count as composition intent; contain unavoidable mechanics in one skill.
 
