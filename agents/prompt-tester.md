@@ -3,12 +3,14 @@ name: prompt-tester
 description: >
   Use when a prompt draft needs behavioral verification: does the agent do
   what the prompt says? Review catches design flaws; testing catches behavior.
-model: deepseek
-effort: high
+model: terra
+effort: xhigh
 model-policies:
+  - match: {alias: terra}
+    override: {effort: xhigh}
+  - match: {alias: sol}
+    override: {effort: medium}
   - match: {alias: deepseek}
-    override: {}
-  - match: {alias: gpt55}
     override: {effort: high}
   - match: {alias: opus46}
     override: {effort: high}

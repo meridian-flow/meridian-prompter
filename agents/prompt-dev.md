@@ -8,8 +8,8 @@ model: opus46
 model-policies:
   - match: {alias: opus46}
     override: {}
-  - match: {alias: gpt55}
-    override: {effort: high}
+  - match: {alias: sol}
+    override: {effort: xhigh}
   - match: {alias: deepseek}
     override: {effort: high}
 subagents: [prompt-reviewer, prompt-tester, python-tool-writer, web-prompt-researcher, explorer, session-miner]

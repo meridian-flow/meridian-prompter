@@ -4,6 +4,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- Prompt Dev retains Opus 4.6 as its default and replaces its GPT-5.5 fallback with `sol` at `xhigh`; Prompt Reviewer defaults to `sol` at `xhigh`; Prompt Tester defaults to `terra` at `xhigh` with `sol` at `medium`; Python Tool Writer defaults to `sol` at `medium`; Web Prompt Researcher retains GPT Mini and replaces its GPT-5.5 fallback with `terra` at `xhigh`.
+
 ## [0.4.0] - 2026-07-09
 
 ### Added

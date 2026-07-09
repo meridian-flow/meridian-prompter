@@ -3,11 +3,11 @@ name: python-tool-writer
 description: >
   Use when a task is deterministic and a library can solve it directly.
   Prefer a tool over a bespoke agent when reproducibility matters.
-model: gpt55
-effort: high
+model: sol
+effort: medium
 model-policies:
-  - match: {alias: gpt55}
-    override: {}
+  - match: {alias: sol}
+    override: {effort: medium}
   - match: {alias: opus46}
     override: {effort: high}
   - match: {alias: composer}

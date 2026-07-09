@@ -3,11 +3,11 @@ name: prompt-reviewer
 description: >
   Use when an agent or skill draft needs adversarial review before shipping.
   Checks prompt quality, principle adherence, and structure. Read-only.
-model: gpt55
-effort: high
+model: sol
+effort: xhigh
 model-policies:
-  - match: {alias: gpt55}
-    override: {}
+  - match: {alias: sol}
+    override: {effort: xhigh}
   - match: {alias: opus46}
     override: {effort: high}
   - match: {alias: deepseek}

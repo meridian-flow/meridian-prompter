@@ -9,8 +9,8 @@ effort: medium
 model-policies:
   - match: {alias: gptmini}
     override: {}
-  - match: {alias: gpt55}
-    override: {effort: medium}
+  - match: {alias: terra}
+    override: {effort: xhigh}
   - match: {alias: deepseek}
     override: {effort: high}
   - match: {alias: opus46}
