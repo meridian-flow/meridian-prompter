@@ -12,8 +12,6 @@ model-policies:
     override: {effort: high}
   - match: {alias: opus46}
     override: {effort: high}
-  - match: {alias: opus48}
-    override: {effort: high}
 skills:
   load: [prompt-principles]
 tools:

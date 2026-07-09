@@ -8,7 +8,7 @@ effort: high
 model-policies:
   - match: {alias: gpt55}
     override: {}
-  - match: {alias: opus47}
+  - match: {alias: opus46}
     override: {effort: high}
   - match: {alias: composer}
     override: {effort: high}

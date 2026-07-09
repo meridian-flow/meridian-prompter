@@ -22,7 +22,7 @@ Skills reach agents through four paths (see `/prompt-principles/resources/skill-
 - **`description`**: caller discovery surface. List attachable skill names so parent agents know what to compose via `--skills`.
 - **`--skills`**: caller injection at spawn time. Bypasses `available`; any bundled skill can be injected.
 
-An `available` skill without `model-invocable` is visible but not loadable, a common misconfiguration. Keep the global `model-invocable` pool small; each entry costs description tokens on every turn.
+`model-invocable` defaults to true; an explicit `model-invocable: false` makes an `available` skill visible but not self-loadable (caller injection via `--skills` still works). Keep the global `model-invocable` pool small; each entry costs description tokens on every turn.
 
 ## Types
 

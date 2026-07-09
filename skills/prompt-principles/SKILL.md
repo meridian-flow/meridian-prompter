@@ -31,6 +31,12 @@ The body carries what the agent needs every run. Resources carry depth it reache
 
 Name explicit artifacts. Say what the agent should produce. State what success looks like. When independence matters, verify in a separate spawn.
 
+## Keep the Core Harness-Agnostic
+
+Load-bearing prompts — agent bodies, core skills — state intent: what to delegate, what context to pass, what the result must satisfy. Environment mechanics (CLI flags, tool names, launch commands) belong to the environment: the harness's own system prompt, or the tool's `-h`/help surface the agent reads at runtime.
+
+The test: would this prompt survive a harness swap unchanged? "Spawn a researcher in the background and collect the result before your verdict" ports; a flag plus a wait command does not. Naming *what* to compose is intent, not mechanics: `@agent` references and skill attachments (`@coder --skills testing`) declare the staffing and survive the test. When mechanics must be written down, contain them in one skill so a new environment swaps that skill, not every agent.
+
 ## Deeper Resources
 
 Load `resources/prompt-level.md` for prompt text, attention, structure, and explanation. Load `resources/skill-level.md` for skill boundaries, loading, and progressive disclosure. Load `resources/agent-level.md` for agent role, boundary, description, and cognitive mode. Load `resources/system-level.md` for handoffs, verification, model staffing, and multi-agent coordination.

@@ -10,8 +10,6 @@ model-policies:
     override: {}
   - match: {alias: opus46}
     override: {effort: high}
-  - match: {alias: opus48}
-    override: {effort: high}
   - match: {alias: deepseek}
     override: {effort: high}
 skills:

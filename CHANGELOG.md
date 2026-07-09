@@ -4,6 +4,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Added
+- `/prompt-principles`: new "Keep the Core Harness-Agnostic" section — load-bearing prompts state intent; environment mechanics live in the harness system prompt or the tool's `-h`; `@agent` references and `--skills` attachment count as composition intent; contain unavoidable mechanics in one skill.
+
+### Changed
+- `/skill-artifacts`: corrected `model-invocable` semantics — defaults to true; explicit `false` makes an `available` skill visible but not self-loadable (caller `--skills` injection still works).
+- `/agent-artifacts`: bodies should be harness-agnostic as well as caller-agnostic — state intent, leave CLI flags and tool mechanics to the environment.
+- Agent profile retunes (prompt-dev, prompt-reviewer, prompt-tester, python-tool-writer).
+
 ## [0.3.11] - 2026-07-05
 
 ### Changed
